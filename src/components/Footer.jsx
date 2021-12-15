@@ -64,15 +64,16 @@ justify-content: space-between;
 }
 
 h2{
-    color:#919496;
-    font-size:1em;
+    color:#B2B2B2;
+    font-size:0.9em;
     cursor:pointer;
     font-weight: 600;
+    
 }
 
 h3{
     color:var(--darkwhite-color);
-    font-size:1em;
+    font-size:0.9em;
     cursor:pointer;
     font-weight: 600;
 }

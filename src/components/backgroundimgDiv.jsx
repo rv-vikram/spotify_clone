@@ -97,6 +97,9 @@ h3{
     font-size:1.6em;
     font-weight:450;
     bold:none;
+    font-weight: 600;
+    line-height:32px;
+    
 }
 
 
