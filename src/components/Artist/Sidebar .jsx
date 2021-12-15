@@ -8,7 +8,6 @@ export function Sidebar() {
 const Layout = styled.div`
     width: 200px;
     height:928px;
-    border:1px solid red;
     position: fixed;
     overflow-y:hidden;
 `;

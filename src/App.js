@@ -18,6 +18,9 @@ function App() {
         <Login />
 
       </Route>
+      <Route to='/artist'>
+        <Artist />
+      </Route>
       <Route to='/dashboard'>
         <Dashboard />
       </Route>

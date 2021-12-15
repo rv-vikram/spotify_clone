@@ -1,9 +1,9 @@
 
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { accessUrl } from "./spotifyApi";
-import { useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { slideInRight } from 'react-animations';
-import {ImageDiv} from './backgroundimgDiv'
+import { ImageDiv } from './backgroundimgDiv'
 import Hamburger from 'hamburger-react'
 import { Footer } from "./Footer";
 import { AutheContext } from "./Contextprovider";
@@ -11,107 +11,106 @@ import { getTokenFromResponse } from "./spotifyApi"
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
 
-export const Login=()=>{
+export const Login = () => {
     const [isOpen, setOpen] = useState(false)
-    
-    const {state,f} = useContext(AutheContext)
-    
-    
-
-  useEffect(()=>{
-     let hash= getTokenFromResponse()
-     f(hash.access_token)
-     hash="";
-     spotifyApi.setAccessToken(state)
-     spotifyApi.getMe().then((user) => {
-        console.log(user)
-      });
-
-//       spotifyApi.searchTracks('friends')
-//   .then((data)=> {
-//     console.log('Search by "Love"', data);
-//   })
-
-  
-  
-//   spotifyApi.getCategories({
-//     limit : 5,
-//     offset: 0,
-//     country: 'SE',
-//     locale: 'sv_SE'
-// })
-// .then(function(data) {
-//   console.log(data);
-// }, function(err) {
-//   console.log("Something went wrong!", err);
-// });
+    const { state, f } = useContext(AutheContext)
 
 
-  
-  // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
-  // .then(function(data) {
-  //   console.log('Artist albums', data);
-  // }, function(err) {
-  //   console.error(err);
-  // });
-  // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
-  // .then(function(data) {
-  //   console.log(data);
-  // })
-    
-  // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
-  // .then(function(data) {
-  //   console.log(data);
-  // });
 
-    },[state])
+    useEffect(() => {
+        let hash = getTokenFromResponse()
+        f(hash.access_token)
+        hash = "";
+        spotifyApi.setAccessToken(state)
+        spotifyApi.getMe().then((user) => {
+            console.log(user)
+        });
 
-    return<>
-       <Navdiv>
+        //       spotifyApi.searchTracks('friends')
+        //   .then((data)=> {
+        //     console.log('Search by "Love"', data);
+        //   })
 
-        <div style={{width:"80%",margin:"auto"}}>
-        <img src="spotifywhite.svg" alt="" style={{clear:"right"}} />
 
-        <div className="container" >
-            <p >Premium</p>
-            <p>Support</p>
-            <p>Download</p>
-           <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
-           
-        </div>
-        <div className="hamburger">
-         
-          <Hamburger color="var(--darkwhite-color)" toggled={isOpen} toggle={setOpen} />
+
+        //   spotifyApi.getCategories({
+        //     limit : 5,
+        //     offset: 0,
+        //     country: 'SE',
+        //     locale: 'sv_SE'
+        // })
+        // .then(function(data) {
+        //   console.log(data);
+        // }, function(err) {
+        //   console.log("Something went wrong!", err);
+        // });
+
+
+
+        // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
+        // .then(function(data) {
+        //   console.log('Artist albums', data);
+        // }, function(err) {
+        //   console.error(err);
+        // });
+        // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
+        // .then(function(data) {
+        //   console.log(data);
+        // })
+
+        // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
+        // .then(function(data) {
+        //   console.log(data);
+        // });
+
+    }, [state])
+
+    return <>
+        <Navdiv>
+
+            <div style={{ width: "80%", margin: "auto" }}>
+                <img src="spotifywhite.svg" alt="" style={{ clear: "right" }} />
+
+                <div className="container" >
+                    <p >Premium</p>
+                    <p>Support</p>
+                    <p>Download</p>
+                    <a style={{ textDecoration: "none" }} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+                    <a style={{ textDecoration: "none" }} href={accessUrl}> <p className="light">Login</p></a>
+
+                </div>
+                <div className="hamburger">
+
+                    <Hamburger color="var(--darkwhite-color)" toggled={isOpen} toggle={setOpen} />
+                </div>
             </div>
-        </div>
-        <HamburgerDiv display={isOpen}>
-          <p >Premium</p>
-            <p>Support</p>
-            <p>Download</p>
-          {
-            (state!=undefined)? <h1>loged in</h1>:<>
-                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
-          }
-           
-          </HamburgerDiv>
+            <HamburgerDiv display={isOpen}>
+                <p >Premium</p>
+                <p>Support</p>
+                <p>Download</p>
+                {
+                    (state != undefined) ? <h1>loged in</h1> : <>
+                        <a style={{ textDecoration: "none" }} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+                        <a style={{ textDecoration: "none" }} href={accessUrl}> <p className="light">Login</p></a></>
+                }
 
-       </Navdiv>
-       <ImageDiv bg={'rgb(150, 240, 182)'} btn={'Get 3 Months free'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
-         
-       </ImageDiv>
-       <ImageDiv bg={'#F46EBE'}  color={'#202F72'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
-          
-  <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'}  h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
- 
- 
- <Footer/>
- 
+            </HamburgerDiv>
+
+        </Navdiv>
+        <ImageDiv bg={'rgb(150, 240, 182)'} btn={'Get 3 Months free'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
+
+        </ImageDiv>
+        <ImageDiv bg={'#F46EBE'} color={'#202F72'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'} />
+
+        <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'} h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
+
+
+        <Footer />
+
     </>
 }
 
-export const Navdiv=styled.div`
+export const Navdiv = styled.div`
 
     width:100%;
    padding:15px 0;
@@ -167,14 +166,14 @@ export const Navdiv=styled.div`
 `
 const bounceAnimation = keyframes`${slideInRight}`;
 
-  
 
 
-export const HamburgerDiv=styled.div`
+
+export const HamburgerDiv = styled.div`
 
     background:var(--dark-black-background);
     padding:10px;
-    display:${props=>props.display? "block":"none"};
+    display:${props => props.display ? "block" : "none"};
     animation: 1s ${bounceAnimation};
     min-width:40%;
     position:absolute;
