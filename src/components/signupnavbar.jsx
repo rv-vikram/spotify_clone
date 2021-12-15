@@ -13,60 +13,64 @@ const spotifyApi = new SpotifyWebApi();
 
 export const Login=()=>{
     const [isOpen, setOpen] = useState(false)
-    const [user,setUser]= useState("")
+    const [user,setUser]= useState({})
     const [logout,setLogout] =useState(false)
-    
+    const [token,setT]= useState("")
+   
     const {state,f} = useContext(AutheContext)
     
-    
-
   useEffect(()=>{
      let hash= getTokenFromResponse()
+
+     
+     window.location.hash = "";
+     let _token = hash.access_token;
     
-     f(hash.access_token)
+     if(_token){
+        f(hash.access_token)
+        setT(hash.access_token)
+        window.location.hash=""  
    
-     window.location.hash=""
-     spotifyApi.setAccessToken(state)
-    
-     spotifyApi.getMe().then((me) => {
-        setUser(me)
-      });
+       spotifyApi.setAccessToken(_token)
+       spotifyApi.getMe().then((me) => {
+           
+            setUser(me)
+          });
+       
+        
+   //   spotifyApi.getCategories({
+   //     limit : 5,
+   //     offset: 0,
+   //     country: 'SE',
+   //     locale: 'sv_SE'
+   // })
+   // .then(function(data) {
+   //   console.log(data);
+   // }, function(err) {
+   //   console.log("Something went wrong!", err);
+   // });
+   
+   
+     
+     // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
+     // .then(function(data) {
+     //   console.log('Artist albums', data);
+     // }, function(err) {
+     //   console.error(err);
+     // });
+     // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
+     // .then(function(data) {
+     //   console.log(data);
+     // })
+       
+     // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
+     // .then(function(data) {
+     //   console.log(data);
+     // });
+     }
 
-      
-  
-  
-//   spotifyApi.getCategories({
-//     limit : 5,
-//     offset: 0,
-//     country: 'SE',
-//     locale: 'sv_SE'
-// })
-// .then(function(data) {
-//   console.log(data);
-// }, function(err) {
-//   console.log("Something went wrong!", err);
-// });
+    },[state,f])
 
-
-  
-  // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
-  // .then(function(data) {
-  //   console.log('Artist albums', data);
-  // }, function(err) {
-  //   console.error(err);
-  // });
-  // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
-  // .then(function(data) {
-  //   console.log(data);
-  // })
-    
-  // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
-  // .then(function(data) {
-  //   console.log(data);
-  // });
-
-    },[state])
-console.log(user);
     return<>
        <Navdiv>
 
@@ -80,11 +84,16 @@ console.log(user);
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
             {
-            (state!="")? <>
+            (state==="" || state===undefined)? <>
+                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
+           </>:
+
+           <>
             
             <img className="userlogo"  src="userlogo.svg" ></img>
             
-            <p style={{cursor:"pointer"}} >{user.display_name}</p>
+            <p style={{cursor:"pointer"}} >{user?.display_name}</p>
             <p onClick={()=>{
                 setLogout(!logout)
             }}><img src="down.svg" alt=""  /></p>
@@ -92,9 +101,7 @@ console.log(user);
                <p>Account</p>
                <p>Logout</p>
             </Logoutdiv>
-                </>:<>
-                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
+                </>
           }
         </div>
         <div className="hamburger">
