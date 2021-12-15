@@ -31,7 +31,7 @@ export const Footer=()=>{
            <h3>Free Mobile App</h3>
        </div>
        <div>
-      <div style={{display:"flex",paddingRight:"5px"}}>
+      <div className="social" >
          <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'13px',background:"hsla(0, 0%, 16%, 1)"}}>
              <img src="insta.svg"></img>
          </div>
@@ -65,14 +65,16 @@ justify-content: space-between;
 
 h2{
     color:#919496;
-    font-size:1.2em;
+    font-size:1em;
     cursor:pointer;
+    font-weight: 600;
 }
 
 h3{
     color:var(--darkwhite-color);
-    font-size:1.2em;
+    font-size:1em;
     cursor:pointer;
+    font-weight: 600;
 }
 
 h2:hover{
@@ -82,6 +84,11 @@ h2:hover{
 h3:hover{
     color:var(--hover-green-color);
 }
+
+.social{
+    display:flex;
+    paddingRight:5px;
+}
 @media only screen and (max-width: 1000px ){
     .icondiv{
         width:100%;
@@ -89,6 +96,10 @@ h3:hover{
 
     h2,h3{
         font-size:1em;
+    }
+
+    .social{
+        display:block;
     }
 }
 @media only screen and (max-width: 600px ){

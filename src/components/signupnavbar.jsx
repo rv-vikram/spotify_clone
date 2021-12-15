@@ -23,7 +23,7 @@ export const Login=()=>{
   useEffect(()=>{
      let hash= getTokenFromResponse()
      f(hash.access_token)
-     hash="";
+     window.location.hash="";
      spotifyApi.setAccessToken(state)
      spotifyApi.getMe().then((user) => {
         setUser(user.display_name)
@@ -79,11 +79,12 @@ export const Login=()=>{
             {
             (state!=undefined)? <>
             
-            <img className="userlogo"  src="userlogo.svg" onClick={()=>{
-                setLogout(!logout)
-            }}></img>
+            <img className="userlogo"  src="userlogo.svg" ></img>
             
             <p style={{cursor:"pointer"}} >{user}</p>
+            <p onClick={()=>{
+                setLogout(!logout)
+            }}><img src="down.svg" alt=""  /></p>
             <Logoutdiv display={logout} >
                <p>Account</p>
                <p>Logout</p>

@@ -61,12 +61,27 @@ h4,h1,h3,p{
     color:${props=>props.color};
     text-align: left;
     margin: 16px 0px 32px;
+    font-weight: 500;
+
+line-height: 1.4em;
 }
 h4{
-    font-size:1em;
+    font-size:0.9em;
+    font-family: Montserrat;
+font-style: normal;
+font-weight: bold;
+line-height:16px;
 }
 h1{
-    font-size:3.5em;
+    font-size:3em;
+   
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 70px;
+    /* or 117% */
+    
+    letter-spacing: -0.04em;
+    
 }
 h3{
     font-size:1.6em;
@@ -84,6 +99,7 @@ button{
     border:none;
     color:${props=>props.bgc};
     font-size:1.2em;
+    letter-spacing: 0.05em;
 }
 
 @media only screen and (max-width: 1000px ){
