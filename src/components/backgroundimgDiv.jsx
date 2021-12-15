@@ -74,7 +74,7 @@ button{
     background:${props=>props.color};
     border-radius:20px;
     padding: 10px 20px;
-    width:40%;
+    width:60%;
     text-align:centre;
     border:none;
     color:${props=>props.bgc};

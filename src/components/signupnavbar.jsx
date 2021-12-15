@@ -1,13 +1,70 @@
 
 import styled, {keyframes} from "styled-components";
 import { accessUrl } from "./spotifyApi";
-import { useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { slideInRight } from 'react-animations';
 import {ImageDiv} from './backgroundimgDiv'
 import Hamburger from 'hamburger-react'
+import { Footer } from "./Footer";
+import { AutheContext } from "./Contextprovider";
+import { getTokenFromResponse } from "./spotifyApi"
+import SpotifyWebApi from "spotify-web-api-js";
+const spotifyApi = new SpotifyWebApi();
+
 export const Login=()=>{
     const [isOpen, setOpen] = useState(false)
     
+    const {state,f} = useContext(AutheContext)
+    
+    
+
+  useEffect(()=>{
+     let hash= getTokenFromResponse()
+     f(hash.access_token)
+     hash="";
+     spotifyApi.setAccessToken(state)
+     spotifyApi.getMe().then((user) => {
+        console.log(user)
+      });
+
+//       spotifyApi.searchTracks('friends')
+//   .then((data)=> {
+//     console.log('Search by "Love"', data);
+//   })
+
+  
+  
+//   spotifyApi.getCategories({
+//     limit : 5,
+//     offset: 0,
+//     country: 'SE',
+//     locale: 'sv_SE'
+// })
+// .then(function(data) {
+//   console.log(data);
+// }, function(err) {
+//   console.log("Something went wrong!", err);
+// });
+
+
+  
+  // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
+  // .then(function(data) {
+  //   console.log('Artist albums', data);
+  // }, function(err) {
+  //   console.error(err);
+  // });
+  // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
+  // .then(function(data) {
+  //   console.log(data);
+  // })
+    
+  // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
+  // .then(function(data) {
+  //   console.log(data);
+  // });
+
+    },[state])
 
     return<>
        <Navdiv>
@@ -32,8 +89,11 @@ export const Login=()=>{
           <p >Premium</p>
             <p>Support</p>
             <p>Download</p>
-            <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
+          {
+            (state!=undefined)? <h1>loged in</h1>:<>
+                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
+          }
            
           </HamburgerDiv>
 
@@ -43,7 +103,11 @@ export const Login=()=>{
        </ImageDiv>
        <ImageDiv bg={'#F46EBE'}  color={'#202F72'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
           
-  
+  <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'}  h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
+ 
+ 
+ <Footer/>
+ 
     </>
 }
 
@@ -133,6 +197,20 @@ export const HamburgerDiv=styled.div`
     margin-top:10px;
     font-size:1.5em;
 }
+
+
+@media only screen and (min-width: 1101px){
+    
+        display:none;
+        
+    
+
+    
+}
+
+
+
+
 `
 /**
  *  <a href={accessUrl}>
