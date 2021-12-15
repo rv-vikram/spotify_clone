@@ -1,5 +1,6 @@
 import styled from "styled-components"
-export const ImageDiv=({color,bg,btn,h1,h2,h3,src,})=>{
+import { Link } from "react-router-dom"
+export const ImageDiv=({color,bg,btn,h1,h2,h3,src,para,link,apple,google})=>{
     return <>
     <Imgdiv color={color} bgc={bg}>
     
@@ -10,7 +11,16 @@ export const ImageDiv=({color,bg,btn,h1,h2,h3,src,})=>{
           <h3>{h3}</h3>
         {btn?  <button>{btn}</button>:null}
 
-        <p >Individual plan only. ₹119/month after. Terms and conditions apply. Open only to users who haven't already tried Premium. Offer ends 31 December 2021.</p>
+      { para?  <p >{para}</p>:null}
+
+      <Link style={{fontWeight:"500",lineHeight: '16px',color:"#2941AB",fontSize:"1.1em"}} to="">{link}</Link>
+       
+       {
+           apple?<div style={{padding:"35px 0"}}>
+           <img style={{margin:'5px 10px 0 0'}} src={apple}></img>
+           <img style={{margin:'5px 0 0 10px'}} src={google}></img>
+       </div>:null
+       }
           </div>
           <div className='imgdiv'>
           <img src={src}></img>
@@ -98,8 +108,9 @@ button{
     text-align:centre;
     border:none;
     color:${props=>props.bgc};
-    font-size:1.2em;
+    font-size:1em;
     letter-spacing: 0.05em;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1000px ){
