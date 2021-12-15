@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
     --hover-green-color:#1DB954;
     --light-green-color: rgb(150, 240, 182);
     overflow-x:hidden;
+
+
+
+    
 }
 
 `

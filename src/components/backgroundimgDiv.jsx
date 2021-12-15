@@ -9,11 +9,15 @@ export const ImageDiv=({color,bg,btn,h1,h2,h3,src,})=>{
           <h1>{h2}</h1>
           <h3>{h3}</h3>
         {btn?  <button>{btn}</button>:null}
+
+        <p >Individual plan only. ₹119/month after. Terms and conditions apply. Open only to users who haven't already tried Premium. Offer ends 31 December 2021.</p>
           </div>
           <div className='imgdiv'>
           <img src={src}></img>
           </div>
+         
   </div>
+ 
     </Imgdiv>
     </>
 }
@@ -24,6 +28,7 @@ export const Imgdiv= styled.div`
     background:${props=>props.bgc};
     padding:40px 35px 70px;
     width:100vw;
+    background-image:url(${props=>props.src});
    
     .cont{
         backgroung:${props=>props.bgc};
@@ -90,6 +95,13 @@ button{
        .imgdiv{
         margin:auto;
         width:85%;
+         img{
+            max-width:70%;
+        }
+    }
+
+    p{
+        text-align:"centre";
     }
 
        &  div{
@@ -98,6 +110,18 @@ button{
 
            
        }
+
+       h4{
+        font-size:0.7em;
+    }
+    h1{
+        font-size:2.5em;
+    }
+    h3{
+        font-size:1em;
+        font-weight:450;
+        bold:none;
+    }
    }
 
  

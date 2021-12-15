@@ -2,7 +2,7 @@
 import styled, {keyframes} from "styled-components";
 import { accessUrl } from "./spotifyApi";
 import { useContext, useState,useEffect } from "react";
-import { slideInRight } from 'react-animations';
+import { slideInRight,bounceInDown } from 'react-animations';
 import {ImageDiv} from './backgroundimgDiv'
 import Hamburger from 'hamburger-react'
 import { Footer } from "./Footer";
@@ -13,6 +13,8 @@ const spotifyApi = new SpotifyWebApi();
 
 export const Login=()=>{
     const [isOpen, setOpen] = useState(false)
+    const [user,setUser]= useState("")
+    const [logout,setLogout] =useState(false)
     
     const {state,f} = useContext(AutheContext)
     
@@ -24,7 +26,7 @@ export const Login=()=>{
      hash="";
      spotifyApi.setAccessToken(state)
      spotifyApi.getMe().then((user) => {
-        console.log(user)
+        setUser(user.display_name)
       });
 
       
@@ -72,9 +74,24 @@ export const Login=()=>{
             <p >Premium</p>
             <p>Support</p>
             <p>Download</p>
-           <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
-           
+
+            <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
+            {
+            (state!=undefined)? <>
+            
+            <img className="userlogo"  src="userlogo.svg" onClick={()=>{
+                setLogout(!logout)
+            }}></img>
+            
+            <p style={{cursor:"pointer"}} >{user}</p>
+            <Logoutdiv display={logout} >
+               <p>Account</p>
+               <p>Logout</p>
+            </Logoutdiv>
+                </>:<>
+                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
+          }
         </div>
         <div className="hamburger">
          
@@ -85,8 +102,13 @@ export const Login=()=>{
           <p >Premium</p>
             <p>Support</p>
             <p>Download</p>
+            <div style={{width:'80px',height:'2px',background:'white',margin:'20px 35px'}}></div>
           {
-            (state!=undefined)? <h1>loged in</h1>:<>
+            (state!=undefined)? <>
+            
+      <p className="light">Account</p>
+      <p className="light">Logout</p>
+            </>:<>
                 <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
            <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
           }
@@ -94,12 +116,13 @@ export const Login=()=>{
           </HamburgerDiv>
 
        </Navdiv>
+      
        <ImageDiv bg={'rgb(150, 240, 182)'} btn={'Get 3 Months free'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
          
        </ImageDiv>
-       <ImageDiv bg={'#F46EBE'}  color={'#202F72'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
+       <ImageDiv bg={'#F46EBE'}  color={'#202F72'} src={'2021.png'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
           
-  <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'}  h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
+  <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'} src={'landingpage.png'} h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
  
  
  <Footer/>
@@ -108,8 +131,8 @@ export const Login=()=>{
 }
 
 export const Navdiv=styled.div`
-
-    width:100%;
+margin:0;
+    width:100vw;
    padding:15px 0;
     background:var(--dark-black-background);
     margin-bottom:0px;
@@ -141,7 +164,7 @@ export const Navdiv=styled.div`
         display:flex;
         float:right;
 
-
+         
         @media only screen and (max-width: 1100px){
             display:none;
             
@@ -158,7 +181,10 @@ export const Navdiv=styled.div`
         }
     }
 
-
+.userlogo:hover{
+    cursor:pointer;
+    color:green;
+}
 
 `
 const bounceAnimation = keyframes`${slideInRight}`;
@@ -206,8 +232,28 @@ export const HamburgerDiv=styled.div`
 
 
 
-
 `
+
+const bounddown = keyframes`${bounceInDown}`;
+
+ export const Logoutdiv=styled.div`
+ animation: 1s ${bounddown};
+ 
+ display:${props=>props.display?"block":"none"};
+ border-radius:3px;
+ background:white;
+ position:absolute;
+ top:60px;
+ right:170px;
+& p{
+    color:var(--dark-black-background);
+
+    hover{
+        color:var(--hover-green-color);
+    }
+}
+ 
+ `
 /**
  *  <a href={accessUrl}>
        Login

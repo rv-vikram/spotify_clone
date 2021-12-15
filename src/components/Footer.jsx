@@ -31,8 +31,16 @@ export const Footer=()=>{
            <h3>Free Mobile App</h3>
        </div>
        <div>
-      <div>
-          {/* <InstagramIcon color="action" sx={{ fontSize: 30 }} /> */}
+      <div style={{display:"flex",paddingRight:"5px"}}>
+         <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'13px',background:"hsla(0, 0%, 16%, 1)"}}>
+             <img src="insta.svg"></img>
+         </div>
+         <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'12px 15px',background:"hsla(0, 0%, 16%, 1)"}}>
+         <img src="facebook.svg"></img>
+         </div>
+         <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'13px',background:"hsla(0, 0%, 16%, 1)"}}>
+         <img src="twitter.svg"></img>
+         </div>
       </div>
        </div>
     </FooterDv>
