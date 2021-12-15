@@ -1,10 +1,15 @@
 
 import './App.css';
 import {Switch,Route} from 'react-router-dom'
-import { Login } from './components/Login';
-
+import { Login } from './components/signupnavbar';
+import { useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 function App() {
+  const [whole,setwhole]= useState('whole')
+  useEffect(()=>{
+    document.documentElement.className = whole;
+  }, [whole]);
+  
  
   return (
     <Switch>

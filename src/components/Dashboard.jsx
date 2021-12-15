@@ -13,29 +13,42 @@ export const Dashboard=()=>{
         console.log(user)
       });
 
-    //   spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-    //     function(data) {
-    //       console.log('Artist albums', data.body)
-    //     },
-    //     function(err) {
-    //       console.error(err)
-    //     }
-    //   );
+      spotifyApi.searchTracks('friends')
+  .then((data)=> {
+    console.log('Search by "Love"', data);
+  })
+
+  
+  
+  spotifyApi.getCategories({
+    limit : 5,
+    offset: 0,
+    country: 'SE',
+    locale: 'sv_SE'
+})
+.then(function(data) {
+  console.log(data);
+}, function(err) {
+  console.log("Something went wrong!", err);
+});
 
 
-    spotifyApi.searchTracks('love')
+  
+  spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
   .then(function(data) {
-    console.log('Search tracks by "Love" in the artist name', data.body);
+    console.log('Artist albums', data);
   }, function(err) {
-    console.log('Something went wrong!', err);
+    console.error(err);
   });
-
-//   spotifyApi.getAudioFeaturesForTrack('08bNPGLD8AhKpnnERrAc6G')
-//   .then(function(data) {
-//     console.log(data.body);
-//   }, function(err) {
-//     console.log(err)
-//   });
+  spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
+  .then(function(data) {
+    console.log(data);
+  })
+    
+  spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
+  .then(function(data) {
+    console.log(data);
+  });
 
     },[token])
     
