@@ -27,11 +27,7 @@ export const Login=()=>{
         console.log(user)
       });
 
-//       spotifyApi.searchTracks('friends')
-//   .then((data)=> {
-//     console.log('Search by "Love"', data);
-//   })
-
+      
   
   
 //   spotifyApi.getCategories({
