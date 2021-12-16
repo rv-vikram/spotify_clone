@@ -9,6 +9,7 @@ import { Footer } from "./Footer";
 import { AutheContext } from "./Contextprovider";
 import { getTokenFromResponse } from "./spotifyApi"
 import SpotifyWebApi from "spotify-web-api-js";
+import { Link } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
 export const Login=()=>{
@@ -78,7 +79,7 @@ export const Login=()=>{
         <img src="spotifywhite.svg" alt="" style={{clear:"right"}} />
 
         <div className="container" >
-            <p >Premium</p>
+          <Link to='dashboard'>  <p >Premium</p></Link>
             <p>Support</p>
             <p>Download</p>
 
