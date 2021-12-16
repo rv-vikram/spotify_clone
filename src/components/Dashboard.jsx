@@ -1,5 +1,5 @@
 
-import { useEffect,useState } from "react"
+import { useEffect } from "react"
 
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
@@ -8,7 +8,7 @@ export const Dashboard=()=>{
     useEffect(()=>{
       spotifyApi.searchTracks('Party')
       .then(function(data) {
-        console.log('Search by "Love"', data);
+        console.log('Search by Party"', data);
   }, function(err) {
     console.error(err);
   });

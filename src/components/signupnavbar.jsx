@@ -9,60 +9,68 @@ import { Footer } from "./Footer";
 import { AutheContext } from "./Contextprovider";
 import { getTokenFromResponse } from "./spotifyApi"
 import SpotifyWebApi from "spotify-web-api-js";
+import { Link } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
 export const Login=()=>{
     const [isOpen, setOpen] = useState(false)
-    const [user,setUser]= useState("")
+    const [user,setUser]= useState({})
     const [logout,setLogout] =useState(false)
-    
+    const [token,setT]= useState("")
+   
     const {state,f} = useContext(AutheContext)
     
-    
-
   useEffect(()=>{
      let hash= getTokenFromResponse()
-     f(hash.access_token)
-     hash="";
-     spotifyApi.setAccessToken(state)
-     spotifyApi.getMe().then((user) => {
-        setUser(user.display_name)
-      });
 
-      
-  
-  
-//   spotifyApi.getCategories({
-//     limit : 5,
-//     offset: 0,
-//     country: 'SE',
-//     locale: 'sv_SE'
-// })
-// .then(function(data) {
-//   console.log(data);
-// }, function(err) {
-//   console.log("Something went wrong!", err);
-// });
-
-
-  
-  // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
-  // .then(function(data) {
-  //   console.log('Artist albums', data);
-  // }, function(err) {
-  //   console.error(err);
-  // });
-  // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
-  // .then(function(data) {
-  //   console.log(data);
-  // })
+     
+     window.location.hash = "";
+     let _token = hash.access_token;
     
-  // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
-  // .then(function(data) {
-  //   console.log(data);
-  // });
+     if(_token){
+        f(hash.access_token)
+        setT(hash.access_token)
+        window.location.hash=""  
+   
+       spotifyApi.setAccessToken(_token)
+       spotifyApi.getMe().then((me) => {
+           
+            setUser(me)
+          });
+       
+        
+   //   spotifyApi.getCategories({
+   //     limit : 5,
+   //     offset: 0,
+   //     country: 'SE',
+   //     locale: 'sv_SE'
+   // })
+   // .then(function(data) {
+   //   console.log(data);
+   // }, function(err) {
+   //   console.log("Something went wrong!", err);
+   // });
+   
+   
+     
+     // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
+     // .then(function(data) {
+     //   console.log('Artist albums', data);
+     // }, function(err) {
+     //   console.error(err);
+     // });
+     // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
+     // .then(function(data) {
+     //   console.log(data);
+     // })
+       
+     // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
+     // .then(function(data) {
+     //   console.log(data);
+     // });
+     }
 
-    },[state])
+    },[state,f])
 
     return<>
        <Navdiv>
@@ -71,26 +79,30 @@ export const Login=()=>{
         <img src="spotifywhite.svg" alt="" style={{clear:"right"}} />
 
         <div className="container" >
-            <p >Premium</p>
+          <Link to='dashboard'>  <p >Premium</p></Link>
             <p>Support</p>
             <p>Download</p>
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
             {
-            (state!=undefined)? <>
+            (state==="" || state===undefined)? <>
+                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
+           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
+           </>:
+
+           <>
             
-            <img className="userlogo"  src="userlogo.svg" onClick={()=>{
+            <img className="userlogo"  src="userlogo.svg" ></img>
+            
+            <p style={{cursor:"pointer"}} >{user?.display_name}</p>
+            <p onClick={()=>{
                 setLogout(!logout)
-            }}></img>
-            
-            <p style={{cursor:"pointer"}} >{user}</p>
+            }}><img src="down.svg" alt=""  /></p>
             <Logoutdiv display={logout} >
                <p>Account</p>
                <p>Logout</p>
             </Logoutdiv>
-                </>:<>
-                <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
-           <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
+                </>
           }
         </div>
         <div className="hamburger">
@@ -117,12 +129,12 @@ export const Login=()=>{
 
        </Navdiv>
       
-       <ImageDiv bg={'rgb(150, 240, 182)'} btn={'Get 3 Months free'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
+       <ImageDiv bg={'rgb(150, 240, 182)'}  para={"Individual plan only. ₹119/month after. Terms and conditions apply. Open only to users who haven't already tried Premium. Offer ends 31 December 2021."} btn={'GET 3 MONTHS FREE'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
          
        </ImageDiv>
-       <ImageDiv bg={'#F46EBE'}  color={'#202F72'} src={'2021.png'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
+       <ImageDiv bg={'#F46EBE'} apple={'applebtn.svg'} google={'google.svg'} link={'Listen to 2021 highlights here.'} color={'#2941AB'} src={'2021.png'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'}  />
           
-  <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'} src={'landingpage.png'} h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
+  <ImageDiv bg={'rgb(41, 65, 171)'}   color={'#1ED760'} src={'landingpage.png'} h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
  
  
  <Footer/>

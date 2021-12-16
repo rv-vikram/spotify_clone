@@ -8,7 +8,7 @@ export const AutheContextprovider=({children})=>{
     }
     return <>
 
-    <AutheContext.Provider value={{state:token,f:change}}>{children}</AutheContext.Provider>
+    <AutheContext.Provider value={{'state':token,'f':change}}>{children}</AutheContext.Provider>
 
     </>
 }
