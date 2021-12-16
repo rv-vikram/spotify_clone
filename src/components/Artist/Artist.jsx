@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Sidebar } from "./Sidebar ";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Songs";
+import { Pick } from "./Pick";
+import { Boxes } from "./Boxes";
 const spotifyApi = new SpotifyWebApi();
 
 
@@ -31,7 +33,7 @@ export function Artist() {
             });
 
         // Get an artist's top tracks
-        spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx', 'IN')
+        spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx', "IN")
             .then(function (data) {
                 setArtistTrack(data);
                 console.log("tracks", data);
@@ -56,17 +58,88 @@ export function Artist() {
             <SandAP>
                 <div>
                     <h2>Popular</h2>
-                    {/* {artistTrack.tracks.map((song) =>
-                        <Songs song={song} />
-                    )} */}
+                    {artistTrack.tracks.map((song, count) => (
+                        <Songs song={song} count={count++} />
+                    ))}
                 </div>
-                <div><h2>Artist Pick</h2></div>
+                <div>
+                    <h2>Artist Pick</h2>
+                    <Pick />
+                </div>
             </SandAP>
+            <More>SEE MORE</More>
+            <Popular>
+                <h2>Popular Releases</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
+            <Popular>
+                <h2>Singles and EPs</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
+            <Popular>
+                <h2>Featuring Selena Gomez</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
+            <Popular>
+                <h2>Artist Playlist</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
+            <Popular>
+                <h2>Popular Releases</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
+            <Popular>
+                <h2>Popular Releases</h2>
+                <span>SEE ALL</span>
+                <div>
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                    <Boxes />
+                </div>
+
+            </Popular>
         </Content>
     </Layout>
 }
 
 const Layout = styled.div`
+
 font-family: 'Montserrat', sans-serif;
     margin: 0px 0px 0px 0px;
 `;
@@ -107,10 +180,11 @@ const Back = styled.div`
 const Content = styled.div`
     margin-left:200px;
     width: 100%;
-    height: 864px;
+    min-height: 864px;
     background: #121212;
     padding-left:32px;
     padding-top:20px;
+    padding-bottom:20px;
 `;
 
 const Controls = styled.div`
@@ -171,9 +245,41 @@ const SandAP = styled.div`
         color: #FFFFFF;
     }
     &>div:nth-child(1){
-        flex-grow:4
+        flex-grow:3
     }
     &>div:nth-child(2){
-        flex-grow:1
+        margin-left:16px;
+        flex-grow:1;
+    }
+`;
+
+const More = styled.div`
+    width:80px;
+    margin-top: 16px;
+    margin-left:64px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom:70px;
+    &:hover{
+        color:white;
+    }
+`;
+const Popular = styled.div`
+    margin-bottom:40px;
+    &>h2{
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        letter-spacing: -0.05em;
+        text-transform: capitalize;
+        color: #FFFFFF;
+    }
+    &>h2:hover{
+        text-decoration:underline;
+    }
+    &>div{
+        display:flex;
     }
 `;
