@@ -4,12 +4,14 @@ import { useEffect,useState } from "react"
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
 export const Dashboard=()=>{
-    // const [token,setToken]= useState("")
+    //const [token,setToken]= useState("")
     useEffect(()=>{
-      spotifyApi.searchTracks('friends')
-      .then((data)=> {
+      spotifyApi.searchTracks('Love')
+      .then(function(data) {
         console.log('Search by "Love"', data);
-      })
+  }, function(err) {
+    console.error(err);
+  });
     
     },[])
     
