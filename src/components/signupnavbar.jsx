@@ -16,61 +16,33 @@ export const Login=()=>{
     const [isOpen, setOpen] = useState(false)
     const [user,setUser]= useState({})
     const [logout,setLogout] =useState(false)
-    const [token,setT]= useState("")
+    const [refresh,setRefresh]= useState(false)
    
-    const {state,f} = useContext(AutheContext)
-    
-  useEffect(()=>{
-     let hash= getTokenFromResponse()
+    const {state,f,t} = useContext(AutheContext)
+    let hash= getTokenFromResponse()
 
      
      window.location.hash = "";
      let _token = hash.access_token;
     
      if(_token){
-        f(hash.access_token)
-        setT(hash.access_token)
-        window.location.hash=""  
+         localStorage.setItem('token',JSON.stringify(_token))
    
-       spotifyApi.setAccessToken(_token)
+     }
+  useEffect(()=>{
+     
+if(state){
+    f(state)    
+   
+       spotifyApi.setAccessToken(state)
        spotifyApi.getMe().then((me) => {
            
             setUser(me)
           });
-       
-        
-   //   spotifyApi.getCategories({
-   //     limit : 5,
-   //     offset: 0,
-   //     country: 'SE',
-   //     locale: 'sv_SE'
-   // })
-   // .then(function(data) {
-   //   console.log(data);
-   // }, function(err) {
-   //   console.log("Something went wrong!", err);
-   // });
-   
-   
-     
-     // spotifyApi.getArtistAlbums('2ryKHw6BaxKXC1KhRp4Nh1')
-     // .then(function(data) {
-     //   console.log('Artist albums', data);
-     // }, function(err) {
-     //   console.error(err);
-     // });
-     // spotifyApi.getAudioFeaturesForTrack("08bNPGLD8AhKpnnERrAc6G")
-     // .then(function(data) {
-     //   console.log(data);
-     // })
-       
-     // spotifyApi.getAudioAnalysisForTrack('08bNPGLD8AhKpnnERrAc6G')
-     // .then(function(data) {
-     //   console.log(data);
-     // });
-     }
+}
 
-    },[state,f])
+
+    },[state,f,t])
 
     return<>
        <Navdiv>
@@ -85,7 +57,7 @@ export const Login=()=>{
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
             {
-            (state==="" || state===undefined)? <>
+            (state==="" || state===undefined|| state==null)? <>
                 <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
            <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a>
            </>:
@@ -100,7 +72,10 @@ export const Login=()=>{
             }}><img src="down.svg" alt=""  /></p>
             <Logoutdiv display={logout} >
                <p>Account</p>
-               <p>Logout</p>
+               <p style={{cursor:'pointer'}} onClick={()=>{
+                    f("")
+                   localStorage.removeItem('token')
+               }}>Logout</p>
             </Logoutdiv>
                 </>
           }
@@ -152,10 +127,10 @@ margin:0;
 
    & p{
         color:var(--darkwhite-color);
-       margin: 10px 25px;
+       margin: 10px 15px;
        font-weight:600;
        font-family: Montserrat;
-       font-size:1em;
+       font-size:0.9em;
        letter-spacing: 0.05em;
       
     }
