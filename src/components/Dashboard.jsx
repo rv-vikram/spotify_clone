@@ -6,7 +6,7 @@ const spotifyApi = new SpotifyWebApi();
 export const Dashboard=()=>{
     //const [token,setToken]= useState("")
     useEffect(()=>{
-      spotifyApi.searchTracks('Love')
+      spotifyApi.searchTracks('Party')
       .then(function(data) {
         console.log('Search by "Love"', data);
   }, function(err) {

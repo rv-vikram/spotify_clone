@@ -19,6 +19,7 @@ function App() {
       </Route>
 <Route to='/dashboard'>
  <Dashboard/>
+
 </Route>
 
     </Switch>
