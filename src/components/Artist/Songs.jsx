@@ -12,9 +12,11 @@ function getRandomInt() {
     str.toString();
     return str;
 }
-export function Songs(song, count) {
-
-    return <Box>
+export function Songs(song, count,choosetrack) {
+const handliclick=()=>{
+    choosetrack(song)
+}
+    return <Box >
         <div>{song.count + 1}</div>
         <img src={song.song.album.images[2].url} alt="song" />
         <div>{song.song.name}</div>
@@ -29,6 +31,7 @@ const Box = styled.div`
     max-width:776px;
     height: 56px;
     background: #181212;
+    cursor:pointer;
     border-radius: 4px;
     display: flex;
     align-items: center;

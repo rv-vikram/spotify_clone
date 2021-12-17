@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react"
 import { getTokenFromResponse } from "../spotifyApi"
 import styled from "styled-components";
-import { Sidebar } from "./Sidebar ";
+import { Sidebar } from "../Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Songs";
 import { Pick } from "./Pick";
 import { Boxes } from "./Boxes";
+import { useContext } from "react/cjs/react.development";
+import { AutheContext } from '../Contextprovider'
+import { Audiopplay } from "./audio";
 const spotifyApi = new SpotifyWebApi();
 
 
 export function Artist() {
 
-    const [token, setToken] = useState("")
+    const [token, setToken] = useState(false)
     const [artist, setArtist] = useState({});
     const [follow, setFollow] = useState(false);
-    const [artistTrack, setArtistTrack] = useState({});
+    const [artistTrack, setArtistTrack] = useState([]);
+    const [total, setTotal] = useState(0);
+    const { state } = useContext(AutheContext)
 
+    console.log("Aritst", artist);
     useEffect(() => {
-        let hash = getTokenFromResponse()
-        setToken(hash.access_token)
-        spotifyApi.setAccessToken(token)
-        spotifyApi.getMe().then((user) => {
-            console.log(user)
-        });
-
+        spotifyApi.setAccessToken(state);
         spotifyApi.getArtist('0C8ZW7ezQVs4URX5aX7Kqx')
             .then(function (data) {
+                console.log("data", data)
                 setArtist(data);
-                console.log('Artist information', data);
+                setTotal(data.followers.total);
             }, function (err) {
-                console.error(err);
+                console.error("Error", err);
             });
 
 
@@ -37,19 +38,20 @@ export function Artist() {
         // Get an artist's top tracks
         spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx', "IN")
             .then(function (data) {
-                setArtistTrack(data);
-                console.log("tracks", data);
+                setArtistTrack(data.tracks);
+                console.log(data);
+
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
     }, []);
 
     return <Layout>
-        <Sidebar />
+        <Sidebar></Sidebar>
         <Back>
             <div><img src="http://localhost:3000/vectorverified.svg" alt="verified" /><span>Verified Artist</span></div>
-            <h1>{console.log(artist.name)}</h1>
-            {/* <p>{artist.followers.total} monthly listeners</p> */}
+            <h1>{artist.name}</h1>
+            <p>{total} monthly listeners</p>
         </Back>
         <Content>
             <Controls>
@@ -60,8 +62,9 @@ export function Artist() {
             <SandAP>
                 <div>
                     <h2>Popular</h2>
-                    {artistTrack.tracks.map((song, count) => (
-                        <Songs song={song} count={count++} />
+
+                    {artistTrack.map((song, count) => (
+                        <Songs key={song} song={song} count={count++} />
                     ))}
                 </div>
                 <div>
@@ -137,7 +140,10 @@ export function Artist() {
 
             </Popular>
         </Content>
+        <Audiopplay value={state} />
     </Layout>
+
+
 }
 
 const Layout = styled.div`
