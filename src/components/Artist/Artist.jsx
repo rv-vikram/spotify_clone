@@ -8,13 +8,13 @@ import { Pick } from "./Pick";
 import { Boxes } from "./Boxes";
 import { useContext } from "react/cjs/react.development";
 import {AutheContext} from '../Contextprovider'
-import { Audiopplay } from "./audio";
+import {Dashboard} from '../Dashboard'
 const spotifyApi = new SpotifyWebApi();
 
 
 export function Artist() {
 
-    const [token, setToken] = useState(false)
+    const [audio,setAuido] = useState({})
     const [artist, setArtist] = useState({});
     const [follow, setFollow] = useState(false);
     const [artistTrack, setArtistTrack] = useState([]);
@@ -30,18 +30,21 @@ export function Artist() {
                 console.error(err);
             });
 
+           
+
         // Get an artist's top tracks
-        spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx', "IN")
+        spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx','IN')
             .then(function (data) {
-                setArtistTrack(data.tracks);
+               // setArtistTrack(data);
                 console.log(data);
               
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
-    }, []);
+    }, [state]);
 
-    return <Layout>
+    return <>
+    <Layout>
           <Sidebar />
         <Back>
             <div><img src="http://localhost:3000/vectorverified.svg" alt="verified" /><span>Verified Artist</span></div>
@@ -135,9 +138,14 @@ export function Artist() {
 
             </Popular>
         </Content>
-       <Audiopplay  value={state} />
+        <Dashboard/>
     </Layout>
 
+    
+   
+    
+    
+    </>
     
 }
 

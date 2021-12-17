@@ -12,9 +12,10 @@ function getRandomInt() {
     str.toString();
     return str;
 }
-export function Songs(song, count,choosetrack) {
+export function Songs(song, count) {
+    
 const handliclick=()=>{
-    choosetrack(song)
+    //click(song.preview_url)
 }
     return <Box >
         <div>{song.count + 1}</div>

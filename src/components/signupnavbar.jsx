@@ -53,7 +53,7 @@ if(state){
         <img src="spotifywhite.svg" alt="" style={{clear:"right"}} />
 
         <div className="container" >
-          <Link to='dashboard'>  <p >Premium</p></Link>
+          <Link to='/dashboard'>  <p >Premium</p></Link>
            <Link to='/artist'> <p>Support</p></Link>
             <p>Download</p>
 

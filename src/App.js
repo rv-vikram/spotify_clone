@@ -20,13 +20,13 @@ function App() {
         <Login/>
       </Route>
 
-      {/* <Route exact to='/dashboard'>
+      <Route exact path='/dashboard'>
         <Homepage/>
-      </Route> */}
-      <Route  to='/artist'>
+      </Route>
+      <Route  path='/artist'>
         <Artist />
       </Route> 
-     {/* <Route  to='/dashboard'>
+     {/* <Route  path='/dashboard/audio'>
         <Dashboard />
       </Route> */}
 
