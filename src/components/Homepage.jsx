@@ -14,25 +14,25 @@ export const Homepage = () => {
 
     useEffect(()=>{
         spotifyApi.searchTracks('Pop')
-        .then(({tracks}) =>  {
-          console.log('Search by Party"',tracks );
-          setPops(tracks);
+        .then((data) =>  {
+         console.log('Search by Pop"',data.tracks.items);
+          setPops(data.tracks.items);
     }, function(err) {
       console.error(err);
     });
 
         spotifyApi.searchTracks('Love')
-        .then(({tracks}) =>  {
-          //console.log('Search by Party"', tracks);
-          setLove(tracks);
+        .then((data) =>  {
+         // console.log('Search by Love"', data.tracks.items);
+          setLove(data.tracks.items);
     }, function(err) {
       console.error(err);
     });
 
     spotifyApi.searchTracks('Disco')
-    .then(({tracks}) =>  {
-      //console.log('Search by Party"', tracks);
-      setDisco(tracks);
+    .then((data) =>  {
+     // console.log('Search by Party"', data.tracks.items);
+      setDisco(data.tracks.items);
     }, function(err) {
     console.error(err);
     });
@@ -42,13 +42,32 @@ export const Homepage = () => {
             <Sidebar/>
             <HomeNavbar/>
             <div className={styles.homeDiv}>
-                <h1>GOOD MORNING</h1>
                 <div>
-                    {/* {pop.items.map(songs => {
-                      console.log(songs);
-                    })} */}
+                  {pop.map((e) => (
+                    
+                        <div className={styles.pop}>
+                          <img src = {e?.album?.images[0]?.url} alt = "pop"/>
+                          <h4> {e?.name}</h4>
+                          <p>{e?.artists[0]?.name}</p>
+                        </div>
+
+                  ))}
                 </div>
             </div>
+            {/* <div></div>
+            <div className={styles.homeDiv}>
+                <div>
+                  {love.map((e) => (
+                    
+                        <div className={styles.pop}>
+                          <img src = "cover.svg" alt = "pop"/>
+                          <h4> {e.name}</h4>
+                          <p>{e.artists[0].name}</p>
+                        </div>
+
+                  ))}
+                </div>
+            </div> */}
         </div>
     )
 }

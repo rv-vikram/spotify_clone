@@ -2,7 +2,7 @@
 import './App.css';
 import {Switch,Route} from 'react-router-dom'
 import { Login } from './components/signupnavbar';
-import { Homepage1 } from './components/Homepage1';
+import { Homepage } from './components/Homepage';
 import { useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 function App() {
@@ -19,7 +19,7 @@ function App() {
       </Route>
 
       <Route to='/dashboard'>
-        <Homepage1/>
+        <Homepage/>
       </Route>
 
     </Switch>
