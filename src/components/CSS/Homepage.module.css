@@ -1,0 +1,17 @@
+.homeDiv {
+  position: absolute;
+  width: 91%;
+  height: 100vh;
+  left: 200px;
+  top: 64px;
+  overflow-y: scroll;
+  /* border: 1px solid black; */
+  background: #121212;
+}
+h1 {
+  color: white;
+  margin-top: 64px;
+  margin-left: 32px;
+  font-weight: 700;
+  line-height: 36px;
+}

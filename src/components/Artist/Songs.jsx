@@ -16,9 +16,7 @@ export function Songs(song, count,choosetrack) {
 const handliclick=()=>{
     choosetrack(song)
 }
-    return <Box onClick={()=>{
-        handliclick()
-    }}>
+    return <Box >
         <div>{song.count + 1}</div>
         <img src={song.song.album.images[2].url} alt="song" />
         <div>{song.song.name}</div>

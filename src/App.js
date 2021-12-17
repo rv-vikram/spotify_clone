@@ -2,6 +2,7 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import { Login } from './components/signupnavbar';
+import { Homepage } from './components/Homepage';
 import { useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 
@@ -16,12 +17,15 @@ function App() {
   return (
     <Switch>
       <Route exact path={'/'}>
-        <Login />
+        <Login/>
+      </Route>
 
+      {/* <Route exact to='/dashboard'>
+        <Homepage/>
       </Route>
-      <Route exact to='/artist/name'>
+      <Route  to='/artist/name'>
         <Artist />
-      </Route>
+      </Route> */}
       {/* <Route  to='/dashboard'>
         <Dashboard />
       </Route> */}
