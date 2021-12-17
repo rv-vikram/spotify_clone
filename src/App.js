@@ -1,25 +1,30 @@
 
 import './App.css';
-import {Switch,Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import { Login } from './components/signupnavbar';
 import { useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
+
+import { Artist } from "./components/Artist/Artist";
 function App() {
-  const [whole,setwhole]= useState('whole')
-  useEffect(()=>{
+  const [whole, setwhole] = useState('whole')
+  useEffect(() => {
     document.documentElement.className = whole;
   }, [whole]);
-  
- 
+
+
   return (
     <Switch>
       <Route exact path={'/'}>
-    <Login/>
+        <Login />
 
       </Route>
-<Route to='/dashboard'>
- <Dashboard/>
-</Route>
+      <Route exact to='/artist/name'>
+        <Artist />
+      </Route>
+      {/* <Route  to='/dashboard'>
+        <Dashboard />
+      </Route> */}
 
     </Switch>
   );

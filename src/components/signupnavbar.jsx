@@ -1,5 +1,5 @@
 
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { accessUrl } from "./spotifyApi";
 import { useContext, useState,useEffect } from "react";
 import { slideInRight,bounceInDown } from 'react-animations';
@@ -12,7 +12,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { Link } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
-export const Login=()=>{
+export const Login = () => {
     const [isOpen, setOpen] = useState(false)
     const [user,setUser]= useState({})
     const [logout,setLogout] =useState(false)
@@ -52,7 +52,7 @@ if(state){
 
         <div className="container" >
           <Link to='dashboard'>  <p >Premium</p></Link>
-            <p>Support</p>
+           <Link to='artist'> <p>Support</p></Link>
             <p>Download</p>
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
@@ -176,14 +176,14 @@ margin:0;
 `
 const bounceAnimation = keyframes`${slideInRight}`;
 
-  
 
 
-export const HamburgerDiv=styled.div`
+
+export const HamburgerDiv = styled.div`
 
     background:var(--dark-black-background);
     padding:10px;
-    display:${props=>props.display? "block":"none"};
+    display:${props => props.display ? "block" : "none"};
     animation: 1s ${bounceAnimation};
     min-width:40%;
     position:absolute;
