@@ -24,11 +24,13 @@ export const Dashboard=()=>{
 export const Audiopplay=styled.div`
 
 width:100%;
-height:100px;
+padding:10px;
 background:var(--dark-black-background);
 display:flex;
 justify-content:center;
 align-items:center;
+position:sticky;
+bottom:0px;
 
 
 `

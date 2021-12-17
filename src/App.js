@@ -23,7 +23,7 @@ function App() {
       <Route exact path='/dashboard'>
         <Homepage/>
       </Route>
-      <Route  path='/artist'>
+      <Route  path={`/artist/:id`}>
         <Artist />
       </Route> 
      {/* <Route  path='/dashboard/audio'>
