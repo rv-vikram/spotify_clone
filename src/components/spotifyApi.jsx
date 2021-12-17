@@ -20,7 +20,6 @@ export const getTokenFromResponse = () => {
     .reduce((initial, item) => {
       var parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
-
       return initial;
     }, {});
 };

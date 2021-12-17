@@ -9,6 +9,7 @@ import { Footer } from "./Footer";
 import { AutheContext } from "./Contextprovider";
 import { getTokenFromResponse } from "./spotifyApi"
 import SpotifyWebApi from "spotify-web-api-js";
+import { Link } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
 export const Login = () => {
@@ -35,6 +36,7 @@ export const Login = () => {
             spotifyApi.getMe().then((me) => {
 
                 setUser(me)
+                console.log(me);
             });
 
 
@@ -78,7 +80,7 @@ export const Login = () => {
                 <img src="spotifywhite.svg" alt="" style={{ clear: "right" }} />
 
                 <div className="container" >
-                    <p >Premium</p>
+                    <Link to='dashboard'>  <p >Premium</p></Link>
                     <p>Support</p>
                     <p>Download</p>
 
@@ -248,23 +250,23 @@ export const HamburgerDiv = styled.div`
 const bounddown = keyframes`${bounceInDown}`;
 
 export const Logoutdiv = styled.div`
- animation: 1s ${bounddown};
- 
- display:${props => props.display ? "block" : "none"};
- border-radius:3px;
- background:white;
- position:absolute;
- top:60px;
- right:170px;
+animation: 1s ${bounddown};
+
+display:${props => props.display ? "block" : "none"};
+border-radius: 3px;
+background: white;
+position: absolute;
+top: 60px;
+right: 170px;
 & p{
-    color:var(--dark-black-background);
+    color: var(--dark - black - background);
 
     hover{
-        color:var(--hover-green-color);
+        color: var(--hover - green - color);
     }
 }
- 
- `
+
+`
 /**
  *  <a href={accessUrl}>
        Login

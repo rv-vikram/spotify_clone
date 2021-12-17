@@ -32,6 +32,8 @@ export function Artist() {
                 console.error(err);
             });
 
+
+
         // Get an artist's top tracks
         spotifyApi.getArtistTopTracks('0C8ZW7ezQVs4URX5aX7Kqx', "IN")
             .then(function (data) {
@@ -40,13 +42,13 @@ export function Artist() {
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
-    }, [token]);
+    }, []);
 
     return <Layout>
         <Sidebar />
         <Back>
             <div><img src="http://localhost:3000/vectorverified.svg" alt="verified" /><span>Verified Artist</span></div>
-            <h1>{artist.name}</h1>
+            <h1>{console.log(artist.name)}</h1>
             {/* <p>{artist.followers.total} monthly listeners</p> */}
         </Back>
         <Content>
