@@ -22,11 +22,11 @@ function App() {
 
       {/* <Route exact to='/dashboard'>
         <Homepage/>
-      </Route>
-      <Route  to='/artist/name'>
-        <Artist />
       </Route> */}
-      {/* <Route  to='/dashboard'>
+      <Route  to='/artist'>
+        <Artist />
+      </Route> 
+     {/* <Route  to='/dashboard'>
         <Dashboard />
       </Route> */}
 

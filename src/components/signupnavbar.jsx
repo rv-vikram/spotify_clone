@@ -16,15 +16,17 @@ export const Login = () => {
     const [isOpen, setOpen] = useState(false)
     const [user,setUser]= useState({})
     const [logout,setLogout] =useState(false)
-    const [refresh,setRefresh]= useState(false)
+    // const [refresh,setRefresh]= useState(false)
    
-    const {state,f,t} = useContext(AutheContext)
-    let hash= getTokenFromResponse()
-
+    const {state,f} = useContext(AutheContext)
+   
+    spotifyApi.setAccessToken(state)
     
   useEffect(()=>{
+    let hash= getTokenFromResponse()
     window.location.hash = "";
     let _token = hash.access_token;
+   
    
     if(_token){
         localStorage.setItem('token',JSON.stringify(_token))
@@ -34,7 +36,7 @@ export const Login = () => {
 if(state){
     f(state)    
    
-       spotifyApi.setAccessToken(state)
+      
        spotifyApi.getMe().then((me) => {
            console.log('user',me)
             setUser(me)
@@ -42,7 +44,7 @@ if(state){
 }
 
 
-    },[state,f,t])
+    },[state])
 
     return<>
        <Navdiv>
@@ -52,7 +54,7 @@ if(state){
 
         <div className="container" >
           <Link to='dashboard'>  <p >Premium</p></Link>
-           <Link to='artist/name'> <p>Support</p></Link>
+           <Link to='/artist'> <p>Support</p></Link>
             <p>Download</p>
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>
