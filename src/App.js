@@ -2,9 +2,10 @@
 import './App.css';
 import {Switch,Route} from 'react-router-dom'
 import { Login } from './components/signupnavbar';
-import { Homepage } from './components/Homepage';
+//import { Homepage } from './components/Homepage';
 import { useEffect, useState } from 'react';
-import { Dashboard } from './components/Dashboard';
+//import { Dashboard } from './components/Dashboard';
+import { Debouncing } from './components/CSS/Debouncing';
 function App() {
   const [whole,setwhole]= useState('whole')
   useEffect(()=>{
@@ -19,8 +20,9 @@ function App() {
       </Route>
 
       <Route to='/dashboard'>
-        <Homepage/>
+        <Debouncing/>
       </Route>
+    
 
     </Switch>
   );
