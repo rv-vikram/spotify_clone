@@ -33,15 +33,16 @@ export const Login = () => {
 
         }
 
-        if (state) {
-            f(state)
+        // <div className="container" >
+        //   <Link to='/dashboard'>  <p >Premium</p></Link>
+        //    <Link to='/artist/4YRxDV8wJFPHPTeXepOstw'> <p>Support</p></Link>
+        //     <p>Download</p>
 
 
-            spotifyApi.getMe().then((me) => {
-                console.log('user', me)
-                setUser(me)
-            });
-        }
+        spotifyApi.getMe().then((me) => {
+            console.log('user', me)
+            setUser(me)
+        });
 
 
     }, [state])

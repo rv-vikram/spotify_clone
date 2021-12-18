@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { useContext } from "react";
+import { AutheContext } from "../Contextprovider";
 
 function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(+millis / 60000);
@@ -12,22 +13,32 @@ function getRandomInt() {
     str.toString();
     return str;
 }
-export function Songs(song, count,choosetrack) {
-const handliclick=()=>{
-    choosetrack(song)
-}
-    return <Box >
+export const Songs = (song, count) => {
+
+    const { audio, setaudio } = useContext(AutheContext)
+
+    return <Box onClick={() => {
+        setaudio({
+            'image': song?.song?.album?.images[2].url,
+            'name': song?.song?.name,
+            'artist': song?.song.artists[0]?.name
+
+        })
+        //   console.log(audio);
+    }}>
         <div>{song.count + 1}</div>
         <img src={song.song.album.images[2].url} alt="song" />
         <div>{song.song.name}</div>
+
         <div>{getRandomInt()}</div>
-        <img src="heartheart.svg" alt="heart" />
+        <img src="http://localhost:3000/heartheart.svg" alt="heart" />
         <div>{millisToMinutesAndSeconds(song.song.duration_ms)}</div>
-        <img src="MoreTripledots.svg" alt="dots" />
+        <img src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
     </Box>
 }
 
 const Box = styled.div`
+   
     max-width:776px;
     height: 56px;
     background: #181212;

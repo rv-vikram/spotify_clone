@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export function Pick() {
+export function Pick({ artist }) {
+    console.log(artist);
     return <Box>
-        <img src="artistpick.svg" alt="aritst" />
+        <img src={artist[0]?.images[0]?.url} alt="aritst" />
         <Div>
-            <div><img src="pickicon.png" alt="pickicon" /><p>Posted By Selena Gomez</p></div>
-            <div>Selena Gomez - The Hits</div>
+            <div><img src="http://localhost:3000/artistpick.svg" alt="pickicon" /><p>Posted By {artist[0]?.name}</p></div>
+            <div>{artist[0]?.name} - The Hits</div>
             <div>Playlist</div>
         </Div>
     </Box>
