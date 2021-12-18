@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export function Boxes() {
+export function Boxes({prop}) {
 
-    return <Box>
-        <img src="card1.svg" alt="svg" />
-        <div>Daily Mix 1</div>
-        <div>Alan Walker, The Chainsmoker</div>
+
+    return <Box >
+        <img src={prop?.images[0]?.url} alt="svg" />
+        <div>{prop?.name}</div>
+        <div>{prop?.artists[0].name}</div>
         <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
     </Box>
 }

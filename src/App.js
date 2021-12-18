@@ -5,6 +5,7 @@ import { Login } from './components/signupnavbar';
 import { Homepage } from './components/Homepage';
 import { useEffect, useState } from 'react';
 import { Dashboard } from './components/Dashboard';
+import { Final } from "./components/anup/Final";
 
 import { Artist } from "./components/Artist/Artist";
 function App() {
@@ -20,13 +21,14 @@ function App() {
         <Login />
       </Route>
 
-      {/* <Route exact to='/dashboard'>
-        <Homepage/>
-      </Route> */}
-      <Route to='/artist'>
+      <Route exact path='/dashboard'>
+        {/* <Homepage /> */}
+        <Final />
+      </Route>
+      <Route path={`/artist/:id`}>
         <Artist />
       </Route>
-      {/* <Route  to='/dashboard'>
+      {/* <Route  path='/dashboard/audio'>
         <Dashboard />
       </Route> */}
 
