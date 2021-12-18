@@ -4,26 +4,26 @@ export const Sidebar = () => {
         <div style={{ position: "fixed" }}>
             <div className={styles.main_div}>
                 <div>
-                    <img className={styles.spotify_logo} src='spotify.png' alt="spotify" />
+                    <img className={styles.spotify_logo} src='http://localhost:3000/spotify.png' alt="spotify" />
                 </div>
 
                 {/* Menu items group 1 */}
                 <div>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>
-                            <img className={styles.logo_img} src='home.svg' alt='home' />
+                            <img className={styles.logo_img} src='http://localhost:3000/home.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Home</p>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>
-                            <img className={styles.logo_img} src='search.svg' alt='home' />
+                            <img className={styles.logo_img} src='http://localhost:3000/search.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Search</p>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>
-                            <img className={styles.logo_img} src='library.svg' alt='home' />
+                            <img className={styles.logo_img} src='http://localhost:3000/library.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Your Library</p>
                     </div>
@@ -33,19 +33,19 @@ export const Sidebar = () => {
                 <div className={styles.menu_div2}>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>
-                            <img className={styles.logo_img} src='creative-playlist.svg' alt='home' />
+                            <img className={styles.logo_img} src='http://localhost:3000/creative-playlist.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Creative Playlist</p>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.blue}>
-                            <img className={styles.liked_img} src='liked.svg' alt='home' />
+                            <img className={styles.liked_img} src='http://localhost:3000/liked.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Liked Songs</p>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.green}>
-                            <img className={styles.episodes_img} src='episodes.svg' alt='home' />
+                            <img className={styles.episodes_img} src='http://localhost:3000/episodes.svg' alt='home' />
                         </div>
                         <p className={styles.menu_item}>Your Episodes</p>
                     </div>
@@ -65,7 +65,7 @@ export const Sidebar = () => {
 
                 <div className={styles.downloadApp_div}>
                     <div>
-                        <img className={styles.downloadApp_img} src="Download_app.svg" alt="download" />
+                        <img className={styles.downloadApp_img} src="http://localhost:3000/Download_app.svg" alt="download" />
                     </div>
                     <p className={styles.downloadPara}>Install App</p>
 

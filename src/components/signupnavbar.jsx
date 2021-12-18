@@ -33,11 +33,6 @@ export const Login = () => {
 
         }
 
-        // <div className="container" >
-        //   <Link to='/dashboard'>  <p >Premium</p></Link>
-        //    <Link to='/artist/4YRxDV8wJFPHPTeXepOstw'> <p>Support</p></Link>
-        //     <p>Download</p>
-
 
         spotifyApi.getMe().then((me) => {
             console.log('user', me)
@@ -120,62 +115,62 @@ export const Login = () => {
 }
 
 export const Navdiv = styled.div`
-margin:0;
-    width:100vw;
-   padding:15px 0;
-    background:var(--dark-black-background);
-    margin-bottom:0px;
-    
+            margin:0;
+            width:100vw;
+            padding:15px 0;
+            background:var(--dark-black-background);
+            margin-bottom:0px;
 
-   & p{
-        color:var(--darkwhite-color);
-       margin: 10px 15px;
-       font-weight:600;
-       font-family: Montserrat;
-       font-size:0.9em;
-       letter-spacing: 0.05em;
+
+            & p{
+                color:var(--darkwhite-color);
+            margin: 10px 15px;
+            font-weight:600;
+            font-family: Montserrat;
+            font-size:0.9em;
+            letter-spacing: 0.05em;
       
     }
 
-    p:hover{
-        color:var(--hover-green-color);
-    } 
-
-    .light{
-        color:rgba(255, 255, 255, 0.7)
+            p:hover{
+                color:var(--hover-green-color);
     }
 
-    .hamburger{
-        display:none;
+            .light{
+                color:rgba(255, 255, 255, 0.7)
     }
 
-    .container{
-        display:flex;
-        float:right;
+            .hamburger{
+                display:none;
+    }
 
-         
-        @media only screen and (max-width: 1100px){
-            display:none;
+            .container{
+                display:flex;
+            float:right;
+
+
+            @media only screen and (max-width: 1100px){
+                display:none;
             
         }
 
 
     }
-    @media only screen and (max-width: 1100px ){
+            @media only screen and (max-width: 1100px ){
         .hamburger{
-            display:block;
+                display:block;
             position:absolute;
             top:10px;
             right:30px;
         }
     }
 
-.userlogo:hover{
-    cursor:pointer;
-    color:green;
+            .userlogo:hover{
+                cursor:pointer;
+            color:green;
 }
 
-`
+            `
 const bounceAnimation = keyframes`${slideInRight}`;
 
 
@@ -183,36 +178,35 @@ const bounceAnimation = keyframes`${slideInRight}`;
 
 export const HamburgerDiv = styled.div`
 
-    background:var(--dark-black-background);
-    padding:10px;
-    display:${props => props.display ? "block" : "none"};
-    animation: 1s ${bounceAnimation};
-    min-width:40%;
-    position:absolute;
-    right:0px;
-    height:100vh;
-    
+            background:var(--dark-black-background);
+            padding:10px;
+            display:${props => props.display ? "block" : "none"};
+            animation: 1s ${bounceAnimation};
+            min-width:40%;
+            position:absolute;
+            right:0px;
+            height:100vh;
 
 
-    p{
-        font-size:2em;
-        margin:1em;
-        text-decoration:none;
+
+            p{
+                font-size:2em;
+            margin:1em;
+            text-decoration:none;
         
     }
 
-   p:hover{
-       color:var(--hover-green-color);
-   } 
-.light{
-    margin-top:10px;
-    font-size:1.5em;
+            p:hover{
+                color:var(--hover-green-color);
+   }
+            .light{
+                margin-top:10px;
+            font-size:1.5em;
 }
 
 
-@media only screen and (min-width: 1101px){
-    
-        display:none;
+            @media only screen and (min-width: 1101px){
+                display:none;
         
     
 
@@ -221,25 +215,25 @@ export const HamburgerDiv = styled.div`
 
 
 
-`
+            `
 
 const bounddown = keyframes`${bounceInDown}`;
 
 export const Logoutdiv = styled.div`
- animation: 1s ${bounddown};
- 
- display:${props => props.display ? "block" : "none"};
- border-radius:3px;
- background:white;
- position:absolute;
- top:60px;
- right:170px;
-& p{
-    color: var(--dark - black - background);
+            animation: 1s ${bounddown};
 
-    hover{
-        color: var(--hover - green - color);
+            display:${props => props.display ? "block" : "none"};
+            border-radius:3px;
+            background:white;
+            position:absolute;
+            top:60px;
+            right:170px;
+            & p{
+                color: var(--dark - black - background);
+
+            hover{
+                color: var(--hover - green - color);
     }
 }
 
-`
+            `

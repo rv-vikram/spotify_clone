@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getTokenFromResponse } from "../spotifyApi"
 import styled from "styled-components";
-import { Sidebar } from "../Sidebar";
+import { Sidebar } from "./Sidebar ";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Songs";
 import { Pick } from "./Pick";
@@ -10,51 +10,37 @@ import { useContext } from "react/cjs/react.development";
 import { AutheContext } from '../Contextprovider'
 import { Audioplay } from './audio'
 import { useParams } from "react-router-dom";
+import { PlaylistBoxes } from '../plalistbox'
+
 const spotifyApi = new SpotifyWebApi();
 
 
-export function Artist() {
+export function Playlist() {
 
 
     const [artist, setArtist] = useState([]);
-    const [follow, setFollow] = useState(false);
-    const [artistTrack, setArtistTrack] = useState([]);
-    const [album, setAlbum] = useState([])
+    const [description, setDescription] = useState({})
     const { state, audio } = useContext(AutheContext)
 
     const { id } = useParams()
 
-    console.log("Aritst", artist);
     useEffect(() => {
         spotifyApi.setAccessToken(state)
 
 
-        spotifyApi.getArtist(id).then(function (data) {
-            // console.log('data',data);
-            setArtist([...artist, data]);
-
-
-        }, function (err) {
-            console.error("Error", err);
-        });
-
-        spotifyApi.getArtistAlbums(id).then(
-            function (data) {
-                //  console.log('Artist albums', data.items);
-                setAlbum(data.items)
-            },
-            function (err) {
-                console.error(err);
-            }
-        );
-
-
-        // Get an artist's top tracks
-        spotifyApi.getArtistTopTracks(id, 'IN')
+        spotifyApi.getPlaylist(id)
             .then(function (data) {
-                setArtistTrack(data.tracks);
-                // console.log(data.tracks);
+                //  console.log('Some information about this playlist', data);
 
+                setDescription({
+                    'descr': data?.description,
+                    'total': data?.followers?.total,
+                    'name': data?.name,
+                    'img': data?.images[0].url
+                })
+                console.log(data)
+                setArtist(data?.tracks?.items)
+                console.log(artist)
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
@@ -64,82 +50,43 @@ export function Artist() {
     return <>
         <Layout>
             <Sidebar />
-            <Back image={artist[0]?.images[0]?.url}>
-                <div><img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
-                <h1>{artist[0]?.name}</h1>
-                <p>{artist[0]?.followers.total} monthly listeners</p>
+            <Back>
+
+                <div >
+
+                    <img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
+                <h2>{description?.name}</h2>
+                <p>{description?.total} monthly listeners</p>
             </Back>
+
             <Content>
                 <Controls>
                     <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
-                    <div onClick={() => setFollow(!follow)}>{follow ? "following" : "follow"}</div>
+
                     <div><img src="http://localhost:3000/MoreTripledots.svg" alt="triple dots" /></div>
                 </Controls>
                 <SandAP>
                     <div>
                         <h2>Popular</h2>
-                        {artistTrack.map((song, count) => (
-                            <Songs key={song} song={song} count={count++} />
+
+                        {artist.map((song, count) => (
+                            <PlaylistBoxes key={song} song={song} count={count++} />
                         ))}
                     </div>
                     <div>
-                        <h2>Artist Pick</h2>
-                        <Pick artist={artist} />
+                        {/* <h2>Artist Pick</h2>
+                    <Pick /> */}
                     </div>
                 </SandAP>
-                <More>SEE MORE</More>
+
                 <Popular>
                     <h2>Popular Releases</h2>
                     <span>SEE ALL</span>
                     <div>
-                        <Boxes prop={album[0]} />
-                        <Boxes prop={album[1]} />
-                        <Boxes prop={album[2]} />
-                        <Boxes prop={album[3]} />
-
-                    </div>
-
-                </Popular>
-                <Popular>
-                    <h2>Singles and EPs</h2>
-                    <span>SEE ALL</span>
-                    <div>
-                        <Boxes prop={album[5]} />
-                        <Boxes prop={album[6]} />
-                        <Boxes prop={album[7]} />
-                        <Boxes prop={album[8]} />
-                    </div>
-                </Popular>
-                <Popular>
-                    <h2>Featuring Selena Gomez</h2>
-                    <span>SEE ALL</span>
-                    <div>
-                        <Boxes prop={album[4]} />
-                        <Boxes prop={album[9]} />
-                        <Boxes prop={album[10]} />
-                        <Boxes prop={album[11]} />
-                    </div>
-
-                </Popular>
-                <Popular>
-                    <h2>Artist Playlist</h2>
-                    <span>SEE ALL</span>
-                    <div>
-                        <Boxes prop={album[12]} />
-                        <Boxes prop={album[13]} />
-                        <Boxes prop={album[14]} />
-                        <Boxes prop={album[15]} />
-                    </div>
-
-                </Popular>
-                <Popular>
-                    <h2>Popular Releases</h2>
-                    <span>SEE ALL</span>
-                    <div>
-                        <Boxes prop={album[16]} />
-                        <Boxes prop={album[17]} />
-                        <Boxes prop={album[18]} />
-                        <Boxes prop={album[19]} />
+                        <Boxes />
+                        <Boxes />
+                        <Boxes />
+                        <Boxes />
                     </div>
 
                 </Popular>
@@ -159,27 +106,25 @@ export function Artist() {
 
 }
 
-const Layout = styled.div`
+export const Layout = styled.div`
 
 font-family: 'Montserrat', sans-serif;
     margin: 0px 0px 0px 0px;
 `;
 
-const Back = styled.div`
+export const Back = styled.div`
     padding-left: 28px;
-    margin-left:230px;
+    margin-left:200px;
     width:100%;
-    height: 400px;
-    background-image: ${props => `url(${props.image}), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.59) 100%); `};
-    background-repeat: no-repeat;
-    background-position: 0px;
-    background-size: cover;
+   
+    background-image: url("http://localhost:3000/selena.svg"), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.59) 100%); 
     background-blend-mode: lighten;
 
     &>div{
         padding-top: 210px;
         display:flex;
-        align-items:center;
+        
+      
     }
     & > h1{
         margin:0px;
@@ -190,10 +135,11 @@ const Back = styled.div`
     }
     & > div>span{
         padding-left:3px;
+        margin-top:5px;
     }
     & > div>span,
     & > p{
-        margin:0px;
+        margin:5px 0 0;
         font-weight:400;
         font-size:14px;
         color: #FFFFFF;
@@ -201,8 +147,8 @@ const Back = styled.div`
     }
 `;
 
-const Content = styled.div`
-    margin-left:230px;
+export const Content = styled.div`
+    margin-left:200px;
     width: 100%;
     min-height: 864px;
     background: #121212;
@@ -211,7 +157,7 @@ const Content = styled.div`
     padding-bottom:20px;
 `;
 
-const Controls = styled.div`
+export const Controls = styled.div`
     width:250px;
     height: 56px;
     display:flex;
@@ -219,7 +165,7 @@ const Controls = styled.div`
 
     &>div:nth-child(1){
         width:56px;
-        height:56px;
+       height:56px;
         border-radius: 28px;
         background-color:#1DB954;
     }
@@ -255,7 +201,7 @@ const Controls = styled.div`
     }
 `;
 
-const SandAP = styled.div`
+export const SandAP = styled.div`
     margin-top:30px;
     display:flex;
     width: 1180px;
@@ -277,7 +223,7 @@ const SandAP = styled.div`
     }
 `;
 
-const More = styled.div`
+export const More = styled.div`
     width:80px;
     margin-top: 16px;
     margin-left:64px;
@@ -305,20 +251,5 @@ export const Popular = styled.div`
     }
     &>div{
         display:flex;
-    }
-    &>span{
-        position:relative;
-        bottom:40px;
-        left:68%;
-        font-weight: bold;
-        font-size: 13px;
-        line-height: 16px;
-        color: #B2B2B2;
-        
-    }
-    &>span:hover{
-            
-        color: white;
-        text-decoration:underline;
     }
 `;

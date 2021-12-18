@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export function Boxes({ prop }) {
+export function HomeBoxes({prop}) {
 
 
     return <Box >
-        <img src={prop?.images[0]?.url} alt="svg" />
+       <div> <img src={prop?.images[0]?.url} alt="svg" /></div>
         <div>{prop?.name}</div>
-        <div>{prop?.artists[0]?.name}</div>
-        <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
+        {/* <div>{prop?.artists[0]?.name}</div> */}
+        {/* <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div> */}
     </Box>
 }
 
@@ -25,8 +25,9 @@ const Box = styled.div`
         visibility:visible;
     }
     }
-    &>img{
-        width:100%;
+    img{
+        max-width:100%;
+        min-height:30%;
     }
     &>div:nth-child(2){
         margin: 16px 0px;
