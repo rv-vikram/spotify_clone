@@ -8,6 +8,7 @@ import {Songs} from './Artist/Songs'
 import styled from "styled-components";
 import {SearchBox} from './searchbox'
 import {Link} from 'react-router-dom'
+import { Audiopplay } from "./Artist/audio";
 const spotifyApi = new SpotifyWebApi();
 export const Debouncing = () => {
     const [search,setSearch] = useState('')
@@ -45,7 +46,7 @@ export const Debouncing = () => {
 
     ])
     const[categories,setCategory] =useState([])
-    const {state , f} = useContext(AutheContext)
+    const {state , f,audio} = useContext(AutheContext)
 
     console.log(searchResult);
 
@@ -84,8 +85,8 @@ let c=0
         spotifyApi.searchTracks(search).then(res => {
          if(cancel) return 
         setSearchResult(res.tracks.items)
-console.log(res.tracks.items,'shhjsh');
-            
+
+            console.log(res.tracks.items);
         })
 
        
@@ -148,7 +149,7 @@ console.log(res.tracks.items,'shhjsh');
                 return <Link style={{textDecoration:"none"}} to={`debounce/${e.id}`}><SearchBox prop={e} search={search.length} /></Link>
               }))
             }
-              
+              <Audiopplay prop={audio} />
                
             </Div>       
         </Container>
