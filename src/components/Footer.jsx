@@ -8,7 +8,7 @@ export const Footer=()=>{
     <FooterDv>
 
        <div className="icondiv">
-       <img src="spotifywhite.svg" alt="" />
+       <img  src="spotifywhite.svg" alt="" />
        </div>
        <div>
            <h2>COMPANY</h2>
@@ -33,13 +33,13 @@ export const Footer=()=>{
        <div>
       <div className="social" >
          <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'13px',background:"hsla(0, 0%, 16%, 1)"}}>
-             <img src="insta.svg"></img>
+             <img alt="cs" src="insta.svg"></img>
          </div>
          <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'12px 15px',background:"hsla(0, 0%, 16%, 1)"}}>
-         <img src="facebook.svg"></img>
+         <img alt="xhhj" src="facebook.svg"></img>
          </div>
          <div style={{width:"20px", height:"20px",borderRadius:"20px",margin:"10px",padding:'13px',background:"hsla(0, 0%, 16%, 1)"}}>
-         <img src="twitter.svg"></img>
+         <img alt="dc" src="twitter.svg"></img>
          </div>
       </div>
        </div>

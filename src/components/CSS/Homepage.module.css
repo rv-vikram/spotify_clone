@@ -1,22 +1,29 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
 .homeDiv {
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   display: flex;
   width: 90%;
   flex-wrap: wrap;
-
-  left: 200px;
+min-height: 100vh;
+  left: 230px;
   top: 64px;
   /* border: 1px solid black; */
   background: #121212;
   margin:auto;
 
-/* overflow-x:scroll ; */
+ overflow-x:scroll ; 
 }
 
 .homeDiv>div{
   width:90%;
-  margin:15px auto;
+  margin:10px 15px;
   padding:0 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h1 {

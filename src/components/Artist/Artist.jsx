@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getTokenFromResponse } from "../spotifyApi"
+
 import styled from "styled-components";
 import { Sidebar } from "../Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -159,13 +159,13 @@ export function Artist() {
 
 }
 
-const Layout = styled.div`
+export const Layout = styled.div`
 
 font-family: 'Montserrat', sans-serif;
     margin: 0px 0px 0px 0px;
 `;
 
-const Back = styled.div`
+export const Back = styled.div`
     padding-left: 28px;
     margin-left:230px;
     width:100%;
@@ -201,124 +201,125 @@ const Back = styled.div`
     }
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
     margin-left:230px;
     width: 100%;
-    min-height: 864px;
-    background: #121212;
-    padding-left:32px;
-    padding-top:20px;
-    padding-bottom:20px;
+min-height: 864px;
+background: #121212;
+padding-left:32px;
+padding-top:20px;
+padding-bottom:20px;
 `;
 
-const Controls = styled.div`
-    width:250px;
+export const Controls = styled.div`
+width: 250px;
+height: 56px;
+display: flex;
+align-items: center;
+
+    &>div:nth-child(1){
+    width: 56px;
     height: 56px;
-    display:flex;
-    align-items:center;
+    border-radius:28px;
+    background-color:#1DB954;
+}
+    &>div:nth-child(1) > img{
+    position: relative;
+    left: 40%;
+    top: 35%;
+    transform: scale(1.3)
 
-    &>div:nth-child(1){
-        width:56px;
-        height:56px;
-        border-radius: 28px;
-        background-color:#1DB954;
-    }
-    &>div:nth-child(1)>img{
-        position: relative;
-        left: 40%;
-        top: 35%;
-        transform:scale(1.3)
-
-    }
+}
     &>div:nth-child(1):hover{
-        transform:scale(1.1);
-    }
+    transform: scale(1.1);
+}
     &>div:nth-child(2){
-        font-style: normal;
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 15px;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: #ffffffb2;
-        padding:8px;
-        border: 2px solid #ffffffb2;
-        border-radius: 4px;
-        margin-left: 32px;
-    }
-    &>div:nth-child(2):hover{
-        color:#FFFFFF;
-        border: 2px solid #FFFFFF;
-    }
-    &>div:nth-child(3){
-        margin-left:34px;
-    }
+    font-style:normal;
+    font-weight:bold;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffffb2;
+    padding: 8px;
+    border: 2px solid #ffffffb2;
+    border-radius: 4px;
+    margin-left: 32px;
+}
+    &> div:nth-child(2):hover{
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+    &> div:nth-child(3){
+    margin-left: 34px;
+}
 `;
 
-const SandAP = styled.div`
-    margin-top:30px;
-    display:flex;
-    width: 1180px;
-    &>div>h2{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 28px;
-        letter-spacing: -0.05em;
-        text-transform: capitalize;
-        color: #FFFFFF;
-    }
-    &>div:nth-child(1){
-        flex-grow:3
-    }
-    &>div:nth-child(2){
-        margin-left:16px;
-        flex-grow:1;
-    }
+export const SandAP = styled.div`
+margin-top: 30px;
+display: flex;
+width: 1180px;
+    &> div > h2{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.05em;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+    &> div:nth-child(1){
+    flex-grow: 3
+}
+    &> div:nth-child(2){
+    margin-left: 16px;
+    flex-grow: 1;
+}
 `;
 
 const More = styled.div`
-    width:80px;
-    margin-top: 16px;
-    margin-left:64px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom:70px;
+width: 80px;
+margin-top: 16px;
+margin-left: 64px;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+color: rgba(255, 255, 255, 0.7);
+margin-bottom: 70px;
     &:hover{
-        color:white;
-    }
+    color: white;
+}
 `;
 export const Popular = styled.div`
-    margin-bottom:40px;
-    &>h2{
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 28px;
-        letter-spacing: -0.05em;
-        text-transform: capitalize;
-        color: #FFFFFF;
-    }
-    &>h2:hover{
-        text-decoration:underline;
-    }
-    &>div{
-        display:flex;
-    }
-    &>span{
-        position:relative;
-        bottom:40px;
-        left:68%;
-        font-weight: bold;
-        font-size: 13px;
-        line-height: 16px;
-        color: #B2B2B2;
-        
-    }
-    &>span:hover{
-            
-        color: white;
-        text-decoration:underline;
-    }
+
+margin-bottom: 40px;
+    &> h2{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.05em;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+    &> h2:hover{
+    text-decoration: underline;
+}
+    &> div{
+    display: flex;
+}
+    &> span{
+    position: relative;
+    bottom: 40px;
+    left: 68%;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: #B2B2B2;
+
+}
+    &> span:hover{
+
+    color: white;
+    text-decoration: underline;
+}
 `;

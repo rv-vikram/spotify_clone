@@ -7,39 +7,37 @@ function millisToMinutesAndSeconds(millis) {
     var seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
-
-function getRandomInt() {
-    let str = Math.floor(Math.random() * 10000000);
-    str.toString();
-    return str;
-}
-export const PlaylistBoxes = (song, count) => {
-
+export function Msongs(song) {
+    console.log("songgsss", song);
     const { setaudio } = useContext(AutheContext)
 
     return <Box onClick={() => {
         setaudio({
-            'image': song?.song?.track?.album?.images[2].url,
-            'name': song?.song?.track?.artists[0]?.name,
+            'image': song?.song?.album?.images[2].url,
+            'name': song?.song?.name,
+            'artist': song?.song.artists[0]?.name
 
+            // return <Box onClick={() => {
+            //     setaudio({
+            //         'image': song?.song?.album?.images[2].url,
+            //         'name': song?.song?.name,
+            //         'artist': song?.song.artists[0]?.name
 
         })
-
+        //   console.log(audio);
     }}>
-        <div>{song?.count + 1}</div>
-        <img src={song?.song?.track?.album.images[2].url} alt="song" />
-        <div>{song?.song?.track?.name}</div>
-
-        <div>{getRandomInt()}</div>
-        <img src="heartheart.svg" alt="heart" />
-        <div>{millisToMinutesAndSeconds(song?.song?.track?.duration_ms)}</div>
-        <img src="MoreTripledots.svg" alt="dots" />
+        <img src={song.song.album.images[2].url} alt="song" />
+        <div>{song.song.name}</div>
+        <img src="heartheart.png" alt="heart" />
+        <div>{millisToMinutesAndSeconds(song.song.duration_ms)}</div>
+        <img src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
     </Box>
 }
 
 const Box = styled.div`
    
     max-width:776px;
+    height: 56px;
     background: #181212;
     cursor:pointer;
     border-radius: 4px;
@@ -48,21 +46,14 @@ const Box = styled.div`
     padding: 8px 40px;
     &:hover{
     background: rgba(255, 255, 255, 0.15);
-    &>img:nth-child(5),
-    &>img:nth-child(7){
+    &>img:nth-child(3),
+    &>img:nth-child(5){
         visibility:visible;
     }
     }
-    &>div:nth-child(1){
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
-        color: #FFFFFF;
-    }
-    &>div:nth-child(3){
+    &>div:nth-child(2){
         width:234px;
-      
+        height:20px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -72,7 +63,7 @@ const Box = styled.div`
         line-height: 20px;
         color: #FFFFFF;
     }
-    &>div:nth-child(4){
+    &>div:nth-child(3){
         width:100px;
         font-style: normal;
         font-weight: 500;
@@ -81,7 +72,7 @@ const Box = styled.div`
         color: #FFFFFF;
         margin-left:15%;
     }
-    &>div:nth-child(6){
+    &>div:nth-child(4){
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -94,13 +85,13 @@ const Box = styled.div`
         width:40px;
         margin: 0px 20px;
     }
-    &>img:nth-child(5){
+    &>img:nth-child(3){
         visibility:hidden;
         width:24px;
         margin: 0px;
 
     }
-    &>img:nth-child(7){
+    &>img:nth-child(5){
         width:24px;
         margin: 4%;
         visibility:hidden;
@@ -109,6 +100,5 @@ const Box = styled.div`
         /* width:24px;
         margin: 4%;
         visibility:hidden; */
-        src:"http://localhost:3000/heartwhite.svg";
     }
 `;

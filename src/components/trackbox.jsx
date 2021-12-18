@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
-export function Boxes({ prop }) {
-
+export function TrackBox({prop}) {
+console.log(prop);
 
     return <Box >
-        <img src={prop?.images[0]?.url} alt="svg" />
+        <img src={prop?.icons[0]?.url} alt="svg" />
         <div>{prop?.name}</div>
         <div>{prop?.artists[0]?.name}</div>
-        <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
+        <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div> */}
     </Box>
 }
 
-export const Box = styled.div`
-    width:180px;
-   height:280px;
+const Box = styled.div`
+    width:216px;
+ 
     background: #181818;
     mix-blend-mode: normal;
     border-radius: 4px;
     padding:16px;
-    margin: 0px 16px;
-    transition: .3s ease-in-out;
+    margin: 10px ;
     &:hover{
     background: #282828;
     &>div:nth-child(4){

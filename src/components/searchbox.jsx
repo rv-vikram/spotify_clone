@@ -1,36 +1,32 @@
 import styled from "styled-components";
 
-export function Boxes({ prop }) {
-
+export function SearchBox({ prop, search }) {
+    console.log(search);
 
     return <Box >
-        <img src={prop?.images[0]?.url} alt="svg" />
+        <img src={prop?.icons[0]?.url} alt="svg" />
         <div>{prop?.name}</div>
-        <div>{prop?.artists[0]?.name}</div>
-        <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
     </Box>
 }
 
-export const Box = styled.div`
-    width:180px;
-   height:280px;
+const Box = styled.div`
+    width:200px;
+    display:${props => (props.search > 1) ? "hidden" : "block"};
     background: #181818;
     mix-blend-mode: normal;
     border-radius: 4px;
-    padding:16px;
-    margin: 0px 16px;
-    transition: .3s ease-in-out;
-    &:hover{
-    background: #282828;
-    &>div:nth-child(4){
-        visibility:visible;
-    }
-    }
+    margin: 5px;
+    border-radius:20px;
+    
     &>img{
         width:100%;
+        border-radius:20px;
+        
     }
     &>div:nth-child(2){
-        margin: 16px 0px;
+        position:relative;
+        bottom:45px;
+        margin: 10px 10px;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;

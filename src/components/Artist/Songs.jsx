@@ -15,13 +15,19 @@ function getRandomInt() {
 }
 export const Songs = (song, count) => {
 
-    const { audio, setaudio } = useContext(AutheContext)
+    const { setaudio } = useContext(AutheContext)
 
     return <Box onClick={() => {
         setaudio({
             'image': song?.song?.album?.images[2].url,
             'name': song?.song?.name,
             'artist': song?.song.artists[0]?.name
+
+            // return <Box onClick={() => {
+            //     setaudio({
+            //         'image': song?.song?.album?.images[2].url,
+            //         'name': song?.song?.name,
+            //         'artist': song?.song.artists[0]?.name
 
         })
         //   console.log(audio);
@@ -31,7 +37,7 @@ export const Songs = (song, count) => {
         <div>{song.song.name}</div>
 
         <div>{getRandomInt()}</div>
-        <img src="http://localhost:3000/heartheart.svg" alt="heart" />
+        <img src="heartheart.png" alt="heart" />
         <div>{millisToMinutesAndSeconds(song.song.duration_ms)}</div>
         <img src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
     </Box>
