@@ -4,7 +4,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { HomeNavbar } from "./HomeNavbar";
 
 import {AutheContext}  from './Contextprovider'
-import {Songs} from './Artist/Songs'
+
 import styled from "styled-components";
 import {SearchBox} from './searchbox'
 import {Link} from 'react-router-dom'
@@ -86,7 +86,7 @@ let c=0
          if(cancel) return 
         setSearchResult(res.tracks.items)
 
-            console.log(res.tracks.items);
+            console.log(res.tracks.items,'tracks');
         })
 
        
@@ -114,7 +114,7 @@ let c=0
                   spotifyApi.searchArtists(search)
                   .then(function(data) {
                     setArtist(data.artists.items[0])
-                    console.log( data.artists.items[0],'as');
+                  
                   });
                 }}
 
@@ -126,10 +126,10 @@ let c=0
     
         </HomeNavbar>
         <Container >
-          {/* {console.log(artist?.images[0]?.url,'ar')} */}
+        
         <ArtistDiv prop={search.length}>
-         <Link to={`/artist/${artist?.id}`}>
-         <div className='1'>
+         <Link style={{textDecoration:'none'}} to={`/artist/${artist?.id}`}>
+         <div className='one'>
           <h2 style={{display:"block"}}>Top Results</h2>
             <img src={artist?.images[0]?.url} alt="ad" />
             <h3>{artist?.name}</h3>
@@ -137,9 +137,16 @@ let c=0
           </div>
           </Link>
                 
-          <div className='2'>
+          <div className='two'>
           {searchResult.splice(0,5).map((e,count)=>{
-                  return <Songs key={e.id} count={count++} song={e}></Songs>
+                  return <Songs key={e.id} count={count++} song={e}>
+
+                    <img src={e?.album?.images[0]?.url} alt="" />
+                  <div >
+                  <h5 style={{margin:'0px'}}>{e?.name}</h5>
+                    <p style={{margin:'0px',fontSize:'10px'}}>{e.artists[0].name}</p>
+                  </div>
+                  </Songs>
                 })}
           </div>
         </ArtistDiv>
@@ -158,27 +165,38 @@ let c=0
     )
 }
 
+export const Songs=styled.div`
+
+width:80%;
+display:flex;
+padding:5px;
+& img{
+width:10%;
+padding:0px;
+margin-right:14px;
+}
+
+
+`
+
 export const Div=styled.div`
 display:flex;
 width:100%;
 margin:15px auto;
-padding:0 10px;
+padding:10px;
 flex-wrap:wrap;
-min-height:100vh;
+
 background:#181818;
 `
 export const ArtistDiv=styled.div`
 
 display:${props=>(props.prop)>2? 'flex':'none'};
-padding:15px;
+align-item:centre;
+justify-content:centre;
 
+padding:20px 15px;
 & div {
- 
-  padding:5px;
   background:#181818;
-
-
-  margin-left:30px;
   & img{
     max-width:30%;
     border-radius:50px;
@@ -186,25 +204,40 @@ padding:15px;
  
   mix-blend-mode: normal;
   border-radius: 4px;
-  padding:16px;
   
-  
+ 
+  }
+
+  @media only screen and (max-width: 1100px ){
+    display:block;
+    & div{
+      width:100%;
+      margin-bottom:10px;
+    }
+  .two{
+    min-width:82%;
+  }
 }
 
-.1{
-  width:10%;
+.one{
+  width:80%;
   min-height:0vh;
+  padding:10px 20px;
+  
   &:hover{
     background: #282828;
   }
+  & img{
+    width:60%;
+  }
 }
-.2{
-  width:80%;
+.two{
+  width:70%;
   min-height:0vh;
-  
+padding:10px;
 }
 
-p,h3,h2{
+p,h3,h2,h5{
   color:white;
 }
 

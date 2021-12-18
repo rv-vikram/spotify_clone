@@ -11,9 +11,9 @@ export function Boxes({prop}) {
     </Box>
 }
 
-const Box = styled.div`
+export const Box = styled.div`
     width:216px;
-    height:304px;
+   
     background: #181818;
     mix-blend-mode: normal;
     border-radius: 4px;

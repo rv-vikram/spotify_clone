@@ -94,12 +94,13 @@ if(state){
             <p>Download</p>
             <div style={{width:'80px',height:'2px',background:'white',margin:'20px 35px'}}></div>
           {
-            (state!==undefined)? <>
+            (state!==undefined && state!=="" && state!==null)? <>
             
       <p className="light">Account</p>
-      <p className="light" onClick={()=>{
-                setLogout(!logout)
-            }}>Logout</p>
+      <p className="light" style={{cursor:'pointer'}} onClick={()=>{
+                    f("")
+                   localStorage.removeItem('token')
+               }}>Logout</p>
             </>:<>
                 <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
            <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
