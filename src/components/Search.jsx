@@ -2,7 +2,7 @@ import {Sidebar} from "./Sidebar"
 import { useEffect,useState,useContext } from "react"
 import SpotifyWebApi from "spotify-web-api-js";
 import { HomeNavbar } from "./HomeNavbar";
-import styles from "./CSS/Homepage.module.css"
+
 import {AutheContext}  from './Contextprovider'
 import {Songs} from './Artist/Songs'
 import styled from "styled-components";
