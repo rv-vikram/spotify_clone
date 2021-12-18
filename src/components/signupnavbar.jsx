@@ -54,7 +54,7 @@ if(state){
 
         <div className="container" >
           <Link to='/dashboard'>  <p >Premium</p></Link>
-           <Link to='/artist/4YRxDV8wJFPHPTeXepOstw'> <p>Support</p></Link>
+           <Link to='/artist/37i9dQZF1DX5Ejj0EkURtP'> <p>Support</p></Link>
             <p>Download</p>
 
             <div style={{width:'1px',height:'20px',background:'white',margin:'10px 15px 0 0'}}></div>

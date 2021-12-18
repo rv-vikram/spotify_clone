@@ -10,16 +10,16 @@ import { useContext } from "react/cjs/react.development";
 import {AutheContext} from '../Contextprovider'
 import {Audioplay} from './audio'
 import { useParams } from "react-router-dom";
+import {PlaylistBoxes} from '../plalistbox'
+
 const spotifyApi = new SpotifyWebApi();
 
 
-export function Artist() {
+export function Playlist() {
 
     
     const [artist, setArtist] = useState([]);
-    const [follow, setFollow] = useState(false);
-    const [artistTrack, setArtistTrack] = useState([]);
-    const [album,setAlbum] = useState([])
+    const [description,setDescription]= useState({})
     const {state,audio} = useContext(AutheContext)
     
 const {id} = useParams()
@@ -28,58 +28,49 @@ const {id} = useParams()
         spotifyApi.setAccessToken(state)
 
         
-        spotifyApi.getArtist(id).then(function (data) {
-               // console.log('data',data);
-                setArtist([...artist,data]);
-                
-
-            }, function (err) {
-                console.error(err);
-            });
-
-            spotifyApi.getArtistAlbums(id).then(
-                function(data) {
-                //  console.log('Artist albums', data.items);
-                  setAlbum(data.items)
-                },
-                function(err) {
-                  console.error(err);
-                }
-              );
-
-             
-        // Get an artist's top tracks
-        spotifyApi.getArtistTopTracks(id,'IN')
-            .then(function (data) {
-               setArtistTrack(data.tracks);  
-              // console.log(data.tracks);
-               
-            }, function (err) {
-                console.log('Something went wrong!', err);
-            });
+        spotifyApi.getPlaylist(id)
+        .then(function(data) {
+        //  console.log('Some information about this playlist', data);
+          
+          setDescription({
+              'descr':data?.description,
+              'total':data?.followers?.total,
+              'name':data?.name,
+              'img':data?.images[0].url
+          })
+        console.log(data)
+          setArtist(data?.tracks?.items)
+          console.log(artist)
+        }, function(err) {
+          console.log('Something went wrong!', err);
+        });
     }, [state,id]);
 
   
     return <>
     <Layout>
-          <Sidebar />
+         <Sidebar />
         <Back>
-            <div><img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
-            <h1>{artist[0]?.name}</h1>
-            <p>{artist[0]?.followers.total} monthly listeners</p>
+           
+            <div >
+           
+            <img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
+            <h2>{description?.name}</h2>
+            <p>{description?.total} monthly listeners</p>
         </Back>
+         
         <Content>
             <Controls>
                 <div><img src="http://localhost:3000/VectorPlay.svg" alt="play" /></div>
-                <div onClick={() => setFollow(!follow)}>{follow ? "following" : "follow"}</div>
+            
                 <div><img src="http://localhost:3000/MoreTripledots.svg" alt="triple dots" /></div>
             </Controls>
             <SandAP>
                 <div>
                     <h2>Popular</h2>
                  
-                    {artistTrack.map((song, count) => (
-                        <Songs  key={song} song={song} count={count++} />
+                    {artist.map((song, count) => (
+                        <PlaylistBoxes  key={song} song={song} count={count++} />
                     ))}
                 </div>
                 <div>
@@ -87,80 +78,23 @@ const {id} = useParams()
                     <Pick />
                 </div>
             </SandAP>
-            <More>SEE MORE</More>
+        
             <Popular>
                 <h2>Popular Releases</h2>
                 <span>SEE ALL</span>
                 <div>
-                    <Boxes prop={album[0]}/>
-                    <Boxes prop={album[1]}/>
-                    <Boxes prop={album[2]}/>
-                    <Boxes prop={album[3]}/>
-                  
-                </div>
-
-            </Popular>
-            <Popular>
-                <h2>Singles and EPs</h2>
-                <span>SEE ALL</span>
-                <div>
-                <Boxes prop={album[5]}/>
-                    <Boxes prop={album[6]}/>
-                    <Boxes prop={album[7]}/>
-                    <Boxes prop={album[8]}/>
-                   
-                </div>
-
-            </Popular>
-            <Popular>
-                <h2>Featuring Selena Gomez</h2>
-                <span>SEE ALL</span>
-                <div>
-                <Boxes prop={album[4]}/>
-                    <Boxes prop={album[9]}/>
-                    <Boxes prop={album[10]}/>
-                    <Boxes prop={album[11]}/>
-                </div>
-
-            </Popular>
-            <Popular>
-                <h2>Artist Playlist</h2>
-                <span>SEE ALL</span>
-                <div>
-                <Boxes prop={album[12]}/>
-                    <Boxes prop={album[13]}/>
-                    <Boxes prop={album[14]}/>
-                    <Boxes prop={album[15]}/>
-                </div>
-
-            </Popular>
-            <Popular>
-                <h2>Popular Releases</h2>
-                <span>SEE ALL</span>
-                <div>
-                <Boxes prop={album[16]}/>
-                    <Boxes prop={album[17]}/>
-                    <Boxes prop={album[18]}/>
-                    <Boxes prop={album[19]}/>
-                </div>
-
-            </Popular>
-            <Popular>
-                <h2>Popular Releases</h2>
-                <span>SEE ALL</span>
-                <div>
-                    {/* <Boxes />
+                     <Boxes />
                     <Boxes />
                     <Boxes />
-                    <Boxes /> */}
-                </div>
+                    <Boxes /> 
+                 </div>
 
             </Popular>
         </Content>
        
      {
         ( audio?.name!==undefined)?   <Audioplay/>:null
-     }
+     } 
 
     </Layout>
 
@@ -189,8 +123,8 @@ export const Back = styled.div`
     &>div{
         padding-top: 210px;
         display:flex;
-        align-items:center;
-        justify-content:center;
+        
+      
     }
     & > h1{
         margin:0px;
@@ -201,10 +135,11 @@ export const Back = styled.div`
     }
     & > div>span{
         padding-left:3px;
+        margin-top:5px;
     }
     & > div>span,
     & > p{
-        margin:0px;
+        margin:5px 0 0;
         font-weight:400;
         font-size:14px;
         color: #FFFFFF;
@@ -230,7 +165,7 @@ export const Controls = styled.div`
 
     &>div:nth-child(1){
         width:56px;
-        height:56px;
+       height:56px;
         border-radius: 28px;
         background-color:#1DB954;
     }
