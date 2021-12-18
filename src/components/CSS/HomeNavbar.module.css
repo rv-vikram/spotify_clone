@@ -18,6 +18,7 @@
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 56px;
+  border:none;
 }
 .btn1 {
   position: absolute;
@@ -28,4 +29,18 @@
   background: #0a0f11;
   border-radius: 48px;
   color: white;
+  border: none;
+}
+@media only screen and (max-width: 900px){
+    
+ .btn,.btn1{
+   display: none;
+ }
+  .navbar input{
+    width:100%;
+  }
+
+
+
+
 }

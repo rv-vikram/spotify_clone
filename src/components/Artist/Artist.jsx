@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getTokenFromResponse } from "../spotifyApi"
+
 import styled from "styled-components";
 import { Sidebar } from "./Sidebar ";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -66,7 +66,7 @@ const {id} = useParams()
         <Back>
             <div><img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
             <h1>{artist[0]?.name}</h1>
-            <p>{artist[0]?.followers.total} monthly listeners</p>
+            <p>{artist[0]?.followers?.total} monthly listeners</p>
         </Back>
         <Content>
             <Controls>
@@ -181,7 +181,7 @@ font-family: 'Montserrat', sans-serif;
 export const Back = styled.div`
     padding-left: 28px;
     margin-left:200px;
-    width:100%;
+    width:90%;
    
     background-image: url("http://localhost:3000/selena.svg"), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.59) 100%); 
     background-blend-mode: lighten;
@@ -214,7 +214,7 @@ export const Back = styled.div`
 
 export const Content = styled.div`
     margin-left:200px;
-    width: 100%;
+    width: 90%;
     min-height: 864px;
     background: #121212;
     padding-left:32px;

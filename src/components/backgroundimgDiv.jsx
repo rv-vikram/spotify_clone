@@ -17,13 +17,13 @@ export const ImageDiv=({color,bg,btn,h1,h2,h3,src,para,link,apple,google})=>{
        
        {
            apple?<div style={{padding:"35px 0"}}>
-           <img style={{margin:'5px 10px 0 0'}} src={apple}></img>
-           <img style={{margin:'5px 0 0 10px'}} src={google}></img>
+           <img alt="" style={{margin:'5px 10px 0 0'}} src={apple}></img>
+           <img alt="" style={{margin:'5px 0 0 10px'}} src={google}></img>
        </div>:null
        }
           </div>
           <div className='imgdiv'>
-          <img src={src}></img>
+          <img alt="" src={src}></img>
           </div>
          
   </div>

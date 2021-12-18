@@ -15,7 +15,7 @@ function getRandomInt() {
 }
 export const PlaylistBoxes=(song, count)=> {
     
-    const {audio,setaudio}= useContext(AutheContext)
+    const {setaudio}= useContext(AutheContext)
    
     return <Box onClick={()=>{
        setaudio({

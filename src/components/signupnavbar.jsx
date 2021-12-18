@@ -30,7 +30,7 @@ export const Login = () => {
    
     if(_token){
         localStorage.setItem('token',JSON.stringify(_token))
-  
+        window.location.reload()
     }
      
 if(state){
@@ -45,7 +45,7 @@ if(state){
 }
 
 
-    },[state,user])
+    },[state,user,f])
    
     return<>
        <Navdiv>
@@ -67,7 +67,7 @@ if(state){
 
            <>
             
-            <img className="userlogo"  src="userlogo.svg" ></img>
+            <img className="userlogo"  alt="" src="userlogo.svg" ></img>
             
             <p style={{cursor:"pointer"}} >{user}</p>
             <p onClick={()=>{
@@ -94,7 +94,7 @@ if(state){
             <p>Download</p>
             <div style={{width:'80px',height:'2px',background:'white',margin:'20px 35px'}}></div>
           {
-            (state!=undefined)? <>
+            (state!==undefined)? <>
             
       <p className="light">Account</p>
       <p className="light" onClick={()=>{

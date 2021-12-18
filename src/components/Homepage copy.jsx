@@ -42,7 +42,7 @@ export const Homepage = () => {
       console.log('Something went wrong!', err);
     });
   
-  },[state])
+  },[])
     return (
         <div>
             <Sidebar/>
@@ -54,7 +54,7 @@ export const Homepage = () => {
                 <span>SEE ALL</span>
                 <div>
                 { (throwback.slice(0,4)).map((e)=>{
-                    return <Link style={{textDecoration:'none'}} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+                    return <Link style={{textDecoration:'none'}} to={`/playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
                   })}
                   
                    
@@ -63,11 +63,11 @@ export const Homepage = () => {
             </Popular>
            
             <Popular>
-               
+                <h2></h2>
                 <span>SEE ALL</span>
                 <div>
                 { (salena.slice(0,4)).map((e)=>{
-                    return <Link style={{textDecoration:"none"}} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+                    return <Link style={{textDecoration:"none"}} to={`/playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
                   })}
                   
                    
@@ -75,7 +75,7 @@ export const Homepage = () => {
 
             </Popular>
             <Popular>
-             
+                <h2></h2>
                 <span>SEE ALL</span>
                 <div>
                 { (throwback.slice(0,4)).map((e)=>{
@@ -87,7 +87,7 @@ export const Homepage = () => {
 
             </Popular>
             <Popular>
-                
+                <h2></h2>
                 <span>SEE ALL</span>
                 <div>
                 { (throwback.slice(0,4)).map((e)=>{
@@ -99,7 +99,7 @@ export const Homepage = () => {
 
             </Popular>
             <Popular>
-              
+                <h2></h2>
                 <span>SEE ALL</span>
                 <div>
                 { (throwback.slice(0,4)).map((e)=>{

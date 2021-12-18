@@ -3,20 +3,22 @@
   display: flex;
   width: 90%;
   flex-wrap: wrap;
-
+min-height: 100vh;
   left: 200px;
   top: 64px;
   /* border: 1px solid black; */
   background: #121212;
   margin:auto;
 
-/* overflow-x:scroll ; */
+ overflow-x:scroll ; 
 }
 
 .homeDiv>div{
   width:90%;
   margin:15px auto;
   padding:0 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h1 {

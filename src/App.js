@@ -4,12 +4,13 @@ import { Switch, Route } from 'react-router-dom'
 import { Login } from './components/signupnavbar';
 import { Homepage } from './components/Homepage';
 import { useEffect, useState } from 'react';
-import { Dashboard } from './components/Dashboard';
 
+import {Debouncing} from './components/Search'
+import {Tracks} from './components/tracks'
 import { Artist } from "./components/Artist/Artist";
 import { Playlist } from './components/Artist/playlis';
 function App() {
-  const [whole, setwhole] = useState('whole')
+  const [whole] = useState('whole')
   useEffect(() => {
     document.documentElement.className = whole;
   }, [whole]);
@@ -31,9 +32,13 @@ function App() {
       <Route path={`/Playlist/:id`}>
         <Playlist/>
       </Route>
-     {/* <Route  path='/dashboard/audio'>
-        <Dashboard />
-      </Route> */}
+     <Route exact path='/debounce'>
+      <Debouncing/>
+      </Route>
+
+      <Route exact path='/debounce/:id'>
+        <Tracks/>
+      </Route>
 
     </Switch>
   );

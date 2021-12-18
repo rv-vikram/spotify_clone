@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react"
 
 import styled from "styled-components";
-import { Sidebar } from "./Sidebar ";
+//import { Sidebar } from "./Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
+import { Songs } from "./Artist/Songs";
 
-import { Boxes } from "./Boxes";
 import { useContext } from "react/cjs/react.development";
-import {AutheContext} from '../Contextprovider'
-import {Audioplay} from './audio'
+import {AutheContext} from './Contextprovider'
+import {Audioplay} from './Artist/audio'
 import { useParams } from "react-router-dom";
-import {PlaylistBoxes} from '../plalistbox'
 
 const spotifyApi = new SpotifyWebApi();
 
 
-export function Playlist() {
+export function Tracks() {
 
     
-    const [artist, setArtist] = useState([]);
-    const [description,setDescription]= useState({})
+    const [tracks, setTracks] = useState([]);
+   
     const {state,audio} = useContext(AutheContext)
     
 const {id} = useParams()
@@ -27,36 +26,28 @@ const {id} = useParams()
         spotifyApi.setAccessToken(state)
 
         
-        spotifyApi.getPlaylist(id)
+        spotifyApi.searchTracks(id)
         .then(function(data) {
-        //  console.log('Some information about this playlist', data);
-          
-          setDescription({
-              'descr':data?.description,
-              'total':data?.followers?.total,
-              'name':data?.name,
-              'img':data?.images[0].url
-          })
-        console.log(data)
-          setArtist(data?.tracks?.items)
-          console.log(artist)
+          console.log('Search by "party"', data.tracks.items);
+          setTracks(data?.tracks?.items)
         }, function(err) {
-          console.log('Something went wrong!', err);
+          console.error(err);
         });
+        
     }, [state,id]);
 
   
     return <>
     <Layout>
-         <Sidebar />
-        <Back props={description?.img}>
+         {/* <Sidebar /> */}
+        {/* <Back props={description?.img}>
            
             <div >
            
             </div>
             <h2>{description?.name}</h2>
             <p>{description?.total} monthly listeners</p>
-        </Back>
+        </Back> */}
          
         <Content>
             <Controls>
@@ -66,26 +57,17 @@ const {id} = useParams()
             </Controls>
             <SandAP>
                 <div>
-                    <h2>Popular</h2>
-                 
-                    {artist.map((song, count) => (
-                        <PlaylistBoxes  key={song} song={song} count={count++} />
+                    <h2>{tracks[0]?.type}</h2>
+                 {console.log(tracks,'track')}
+                    {tracks.map((song, count) => (
+                        <Songs  key={song} song={song} count={count++} />
                     ))}
                 </div>
             
             </SandAP>
+            
         
-            <Popular>
-                <h2>Popular Releases</h2>
-                <span>SEE ALL</span>
-                <div>
-                     <Boxes />
-                    <Boxes />
-                    <Boxes />
-                    <Boxes /> 
-                 </div>
-
-            </Popular>
+           
         </Content>
        
      {
@@ -111,7 +93,7 @@ font-family: 'Montserrat', sans-serif;
 export const Back = styled.div`
     padding-left: 28px;
     margin-left:200px;
-    width:90%;
+    width:100%;
    
     background-image: url("http://localhost:3000/selena.svg"), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.59) 100%); 
     background-blend-mode: lighten;
