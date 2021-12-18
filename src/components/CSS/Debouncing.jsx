@@ -31,11 +31,13 @@ export const Debouncing = () => {
     useEffect(() => {
         if(!search)
             return setSearchResult([])
-
+          let cancel =  false;
         spotifyApi.searchTracks(search).then(res => {
+         if(cancel) return 
+
             setSearchResult(res.tracks.items.map(track => {
                 const smallestAlbumImage = track.album.images.reduce(
-                    (smallest,image) => {
+                       (smallest,image) => {
                         if(image.height < smallest.height)
                             return image
                         
@@ -49,6 +51,9 @@ export const Debouncing = () => {
                 }
             }))
         })
+
+       return () => cancel = true ;
+
     },[search])
     return (
         <div>
