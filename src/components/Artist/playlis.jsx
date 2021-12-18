@@ -50,11 +50,11 @@ const {id} = useParams()
     return <>
     <Layout>
          <Sidebar />
-        <Back>
+        <Back props={description?.img}>
            
             <div >
            
-            <img src='http://localhost:3000/Vectorverified.svg' alt="sj" /><span>Verified Artist</span></div>
+            </div>
             <h2>{description?.name}</h2>
             <p>{description?.total} monthly listeners</p>
         </Back>
@@ -73,10 +73,7 @@ const {id} = useParams()
                         <PlaylistBoxes  key={song} song={song} count={count++} />
                     ))}
                 </div>
-                <div>
-                    <h2>Artist Pick</h2>
-                    <Pick />
-                </div>
+            
             </SandAP>
         
             <Popular>

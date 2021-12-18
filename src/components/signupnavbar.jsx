@@ -14,7 +14,7 @@ const spotifyApi = new SpotifyWebApi();
 
 export const Login = () => {
     const [isOpen, setOpen] = useState(false)
-    const [user,setUser]= useState({})
+    const [user,setUser]= useState("")
     const [logout,setLogout] =useState(false)
     // const [refresh,setRefresh]= useState(false)
    
@@ -36,16 +36,17 @@ export const Login = () => {
 if(state){
     f(state)    
    
+    spotifyApi.getMe().then((me) => {
+          
+        setUser(me.display_name)
+      });
+
       
-       spotifyApi.getMe().then((me) => {
-           console.log('user',me)
-            setUser(me)
-          });
 }
 
 
-    },[state])
-
+    },[state,user])
+   
     return<>
        <Navdiv>
 
@@ -68,7 +69,7 @@ if(state){
             
             <img className="userlogo"  src="userlogo.svg" ></img>
             
-            <p style={{cursor:"pointer"}} >{user?.display_name}</p>
+            <p style={{cursor:"pointer"}} >{user}</p>
             <p onClick={()=>{
                 setLogout(!logout)
             }}><img src="down.svg" alt=""  /></p>
@@ -96,7 +97,9 @@ if(state){
             (state!=undefined)? <>
             
       <p className="light">Account</p>
-      <p className="light">Logout</p>
+      <p className="light" onClick={()=>{
+                setLogout(!logout)
+            }}>Logout</p>
             </>:<>
                 <a style={{ textDecoration:"none"}} href='https://accounts.spotify.com/en/login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-currently-playing%2Buser-read-recently-played%2Buser-read-playback-state%2Buser-top-read%2Buser-modify-playback-state%26response_type%3Dtoken%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fdashboard%26client_id%3D92dd421bf3424cee834b25f04461da51%26show_dialog%3Dtrue'> <p className="light">Signup</p></a>
            <a style={{ textDecoration:"none"}} href={accessUrl}> <p className="light">Login</p></a></>
