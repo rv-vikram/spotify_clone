@@ -31,9 +31,13 @@ This project is a clone of spotify website.In Spotify's apps, music can be brows
 
 
 ## App Images
-![image info](./app_images/spotifylogin.png)
-![image info](./app_images/home_page.png)
-![image info](./app_images/pick_your_tour.png)
-![image info](./app_images/journey.png)
-![image info](./app_images/active_trips.png)
-![image info](./app_images/tour_destination.png)
+## Login Page
+![image info](./app_images/spotifyLogin.png)
+<br><br>
+![image info](./app_images/spotifyafterLogin.png)
+## HomePage
+![image info](./app_images/spotifyhomepage.png)
+## Search Page
+![image info](./app_images/search.png)
+## Album Page
+![image info](./app_images/album.jpg)
