@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-export const ImageDiv=({color,bg,btn,h1,h2,h3,src,para,link,apple,google})=>{
+export const ImageDiv=({color,bg,btn,h1,h2,h3,src,para,path,link,apple,google})=>{
     return <>
     <Imgdiv color={color} bgc={bg}>
     
@@ -13,7 +13,7 @@ export const ImageDiv=({color,bg,btn,h1,h2,h3,src,para,link,apple,google})=>{
 
       { para?  <p >{para}</p>:null}
 
-      <Link style={{fontWeight:"500",lineHeight: '16px',color:"#2941AB",fontSize:"1.1em"}} to="">{link}</Link>
+      <Link style={{fontWeight:"500",lineHeight: '16px',color:"#2941AB",fontSize:"1.1em"}} to={path}>{link}</Link>
        
        {
            apple?<div style={{padding:"35px 0"}}>

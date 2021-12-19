@@ -123,7 +123,7 @@ export const Debouncing = () => {
       <Container >
 
         <ArtistDiv prop={search.length}>
-          <Link style={{ textDecoration: 'none' }} to={`/artist/${artist?.id}`}>
+          <Link style={{ textDecoration: 'none' }} to={`/search/artist/${artist?.id}`}>
             <div className='one'>
               <h2 style={{ display: "block" }}>Top Results</h2>
               <img src={artist?.images[0]?.url} alt="ad" />
@@ -151,7 +151,7 @@ export const Debouncing = () => {
 
         <Div check={browse} prop={search.length} >
           {(categories.map((e) => {
-            return <Link style={{ textDecoration: "none" }} to={`debounce/${e.id}`}><SearchBox prop={e} search={search.length} /></Link>
+            return <Link style={{ textDecoration: "none" }} to={`search/${e.id}`}><SearchBox prop={e} search={search.length} /></Link>
           }))
           }
           <Audiopplay prop={audio} />

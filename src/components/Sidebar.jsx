@@ -1,10 +1,11 @@
 import styles from "./Sidebar.module.css"
+import { Link } from "react-router-dom"
 export const Sidebar = () => {
     return (
         <div style={{ position: "fixed" }}>
             <div className={styles.main_div}>
                 <div>
-                    <img className={styles.spotify_logo} src='http://localhost:3000/spotify.png' alt="spotify" />
+                   <Link to='/'> <img className={styles.spotify_logo} src='http://localhost:3000/spotify.png' alt="spotify" /></Link>
                 </div>
 
                 {/* Menu items group 1 */}
@@ -13,13 +14,13 @@ export const Sidebar = () => {
                         <div className={styles.logo_div}>
                             <img className={styles.logo_img} src='http://localhost:3000/home.svg' alt='home' />
                         </div>
-                        <p className={styles.menu_item}>Home</p>
+                      <Link style={{textDecoration:'none'}} to='/home'>  <p className={styles.menu_item}>Home</p></Link>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>
                             <img className={styles.logo_img} src='http://localhost:3000/search.svg' alt='home' />
                         </div>
-                        <p className={styles.menu_item}>Search</p>
+                        <Link style={{ textDecoration: 'none' }} to='/search'><p className={styles.menu_item}>Search</p></Link>
                     </div>
                     <div className={styles.div1}>
                         <div className={styles.logo_div}>

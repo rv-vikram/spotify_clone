@@ -55,8 +55,8 @@ export const Login = () => {
                 <img src="spotifywhite.svg" alt="" style={{ clear: "right" }} />
 
                 <div className="container" >
-                    <Link to='/dashboard'>  <p >Premium</p></Link>
-                    <Link to='/artist/37i9dQZF1DX5Ejj0EkURtP'> <p>Support</p></Link>
+                   <p >Premium</p>
+                  <p>Support</p>
                     <p>Download</p>
 
                     <div style={{ width: '1px', height: '20px', background: 'white', margin: '10px 15px 0 0' }}></div>
@@ -114,7 +114,7 @@ export const Login = () => {
         <ImageDiv bg={'rgb(150, 240, 182)'} para={"Individual plan only. ₹119/month after. Terms and conditions apply. Open only to users who haven't already tried Premium. Offer ends 31 December 2021."} btn={'GET 3 MONTHS FREE'} color={'#202F72'} src={'https://i.scdn.co/image/ab671c3d0000f430143da573d752a8cc11ca120e'} h1={'SPOTIFY PREMIUM'} h2={'Get 3 Months of premium for free'} h3={'Enjoy ad-free music listening, offline playback, and more. Cancel anytime.'}>
 
         </ImageDiv>
-        <ImageDiv bg={'#F46EBE'} apple={'applebtn.svg'} google={'google.svg'} link={'Listen to 2021 highlights here.'} color={'#2941AB'} src={'2021.png'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'} />
+        <ImageDiv bg={'#F46EBE'} path={'/home'} apple={'applebtn.svg'} google={'google.svg'} link={'Listen to 2021 highlights here.'} color={'#2941AB'} src={'2021.png'} h1={'#SPOTIFYWRAPPED'} h2={'2021 Wrapped is ready.'} h3={'But it’s only available in the Spotify app. Download it now to discover more.'} />
 
         <ImageDiv bg={'rgb(41, 65, 171)'} color={'#1ED760'} src={'landingpage.png'} h2={'Looking for music?'} h3={'Start listening to the best new releases.'} btn={'OPEN WEB PLAYER'} ></ImageDiv>
 

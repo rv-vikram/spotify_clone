@@ -22,21 +22,21 @@ function App() {
         <Login />
       </Route>
 
-      <Route exact path='/dashboard'>
+      <Route exact path='/home'>
         <Homepage />
       </Route>
-      <Route exact path={`/artist/:id`}>
+      <Route exact path={`/search/artist/:id`}>
         <Artist />
       </Route>
 
-      <Route path={`/Playlist/:id`}>
+      <Route exact path={`/Playlist/:id`}>
         <Playlist />
       </Route>
-      <Route exact path='/debounce'>
+      <Route exact path='/search'>
         <Debouncing />
       </Route>
 
-      <Route exact path='/debounce/:id'>
+      <Route exact path='/search/:id'>
         <Tracks />
       </Route>
 
