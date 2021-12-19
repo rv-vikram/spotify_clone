@@ -103,9 +103,9 @@ export const Debouncing = () => {
 
 
 
-        <input onClick={() => setBrowse(false)} style={{ padding: '9px', outline: 'none', borderRadius: '15px', margin: "12px 0px 12px 20px", width: '20%', float: "left", border: 'none' }}
+        <input onClick={() => setBrowse(false)} style={{ padding: '9px', outline: 'none', borderRadius: '15px', margin: "12px 0px 12px 20px", width: '25%', float: "left", border: 'none' }}
           type="search"
-          placeholder="Search songs"
+          placeholder="Search Songs, Artist and Playlits"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value)
@@ -196,7 +196,7 @@ align-item:center;
 `
 export const ArtistDiv = styled.div`
 
-  display:${props => (props.prop) > 2 ? 'flex' : 'none'};
+  display:${props => (props.prop) > 0 ? 'flex' : 'none'};
   align-items:centre;
   justify-content:centre;
 

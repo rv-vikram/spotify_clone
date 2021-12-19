@@ -343,7 +343,20 @@ margin-bottom: 40px;
     @media only screen and (max-width: 900px ){
         
         width:90%;
-        margin-bottom:10px;
+        margin-bottom:30px;
+}
+
+&> a{
+    display: flex;
+    flex-wrap:wrap;
+   & div{
+       
+   } 
+
+    @media only screen and (max-width: 900px ){
+        
+        width:45%;
+        margin-bottom:30px;
 }
 }
     &> span{

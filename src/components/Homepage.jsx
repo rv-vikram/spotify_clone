@@ -54,7 +54,7 @@ export const Homepage = () => {
           <span>SEE ALL</span>
           <div>
             {(throwback.slice(0, 4)).map((e) => {
-              return <Link style={{ textDecoration: 'none' }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+              return <Link style={{ textDecoration: 'none',marginBottom:'10px' }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
