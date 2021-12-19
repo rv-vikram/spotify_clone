@@ -239,10 +239,10 @@ export const Logoutdiv = styled.div`
             top:60px;
             right:170px;
             & p{
-                color: var(--dark - black - background);
+                color: var(--dark-black-background);
 
             hover{
-                color: var(--hover - green - color);
+                color: var(--hover-green-color);
     }
 }
 

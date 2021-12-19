@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import styled from "styled-components";
-//import { Sidebar } from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Artist/Songs";
 
@@ -40,7 +40,7 @@ const {id} = useParams()
   
     return <>
     <Layout>
-         {/* <Sidebar /> */}
+         <Sidebar />
         {/* <Back props={description?.img}>
            
             <div >
