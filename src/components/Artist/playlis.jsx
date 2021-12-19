@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
 import styled from "styled-components";
-import { Sidebar } from "./Sidebar ";
+import { Sidebar } from "../Sidebar";
+import { HomeNavbar } from "../HomeNavbar";
 import SpotifyWebApi from "spotify-web-api-js";
 
 import { Boxes } from "./Boxes";
@@ -44,13 +45,15 @@ export function Playlist() {
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
+        console.log("des", description);
     }, [state, id]);
 
 
     return <>
         <Layout>
             <Sidebar />
-            <Back props={description?.img}>
+            <HomeNavbar />
+            <Back image={description?.img}>
 
                 <div >
 

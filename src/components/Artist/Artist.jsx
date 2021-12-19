@@ -194,6 +194,19 @@ export const Back = styled.div`
         
         }
     }
+    & > h2{
+        margin:0px;
+        font-size:54px;
+        line-height:120px;
+        color: #FFFFFF;
+        font-weight: 700;
+        @media only screen and (max-width: 1000px ){
+        
+           font-size:25px;
+            
+        
+        }
+    }
     & > div>span{
         padding-left:3px;
     }
