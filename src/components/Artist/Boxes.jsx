@@ -14,6 +14,11 @@ export function Boxes({ prop }) {
 export const Box = styled.div`
     width:180px;
    height:280px;
+   @media only screen and (max-width: 900px ){
+        
+    width:30%;
+
+}
     background: #181818;
     mix-blend-mode: normal;
     border-radius: 4px;

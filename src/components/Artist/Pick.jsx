@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export function Pick({ artist }) {
-    console.log(artist);
+   
     return <Box>
         <img src={artist[0]?.images[0]?.url} alt="aritst" />
         <Div>
@@ -19,6 +19,7 @@ const Box = styled.div`
     &>img{
         height:76px;
     }
+    
 `;
 
 const Div = styled.div`

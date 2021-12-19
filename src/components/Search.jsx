@@ -54,9 +54,8 @@ export const Debouncing = () => {
     spotifyApi.setAccessToken(state)
 
     spotifyApi.getCategories({
-      limit: 25,
-      offset: 0,
-      country: 'IN',
+     
+      country: 'IN'
 
     })
       .then(function (data) {
@@ -134,19 +133,19 @@ export const Debouncing = () => {
           </Link>
 
           <div className='two'>
-            {searchResult.slice(0, 5).map((song) => (
+            {/* {searchResult.slice(0, 5).map((song) => (
               <Msongs key={song} song={song} />
-            ))}
-            {/* {searchResult.splice(0, 5).map((e, count) => {
+            ))} */}
+            {searchResult.splice(0, 5).map((e, count) => {
               return <Songs key={e.id} count={count++} song={e}>
 
                 <img src={e?.album?.images[0]?.url} alt="" />
                 <div >
-                  <h5 style={{ margin: '0px' }}>{e?.name}</h5>
+                  <h5 style={{ margin: '6px 0px' }}>{e?.name}</h5>
                   <p style={{ margin: '0px', fontSize: '10px' }}>{e.artists[0].name}</p>
                 </div>
               </Songs>
-            })} */}
+            })}
           </div>
         </ArtistDiv>
 
@@ -185,14 +184,15 @@ margin-right:14px;
 `
 
 export const Div = styled.div`
-display:${props => props.check ? "flex" : "none"};
+display:flex;
 /* display:flex; */
-width:100%;
-margin:15px auto;
-padding:10px;
+width:80%;
+margin:35px 15px;
+padding:0px;
 flex-wrap:wrap;
+align-item:center;
+  justify-content:center;
 
-background:#181818;
 `
 export const ArtistDiv = styled.div`
 
@@ -200,7 +200,7 @@ export const ArtistDiv = styled.div`
   align-items:centre;
   justify-content:centre;
 
-padding:20px 15px;
+padding:15px;
 & div {
   background:#181818;
   & img{
@@ -251,7 +251,7 @@ p,h3,h2,h5{
 export const Container = styled.div`
 position: absolute;
   display: flex;
-  width: 90%;
+  width: 100%;
   flex-wrap: wrap;
 background:#181818;
   left: 230px;
@@ -259,7 +259,8 @@ background:#181818;
   /* border: 1px solid black; */
   background: #121212;
   margin:auto;
-
+align-item: center;
+justify-content:center
  overflow-x:none ; 
 
 

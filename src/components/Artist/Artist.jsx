@@ -187,6 +187,12 @@ export const Back = styled.div`
         line-height:120px;
         color: #FFFFFF;
         font-weight: 700;
+        @media only screen and (max-width: 1000px ){
+        
+           font-size:25px;
+            
+        
+        }
     }
     & > div>span{
         padding-left:3px;
@@ -198,12 +204,19 @@ export const Back = styled.div`
         font-size:14px;
         color: #FFFFFF;
         line-height:17.07px;
+        @media only screen and (max-width: 900px ){
+        
+            
+            font-size:12px;
+        
+        }
     }
 `;
 
 export const Content = styled.div`
-    margin-left:230px;
-    width: 100%;
+  
+    margin:0px 40px 0px 230px;
+    width: 90%;
 min-height: 864px;
 background: #121212;
 padding-left:32px;
@@ -259,6 +272,12 @@ export const SandAP = styled.div`
 margin-top: 30px;
 display: flex;
 width: 1180px;
+@media only screen and (max-width: 900px ){
+        
+    display:block;
+
+
+}
     &> div > h2{
     font-style: normal;
     font-weight: bold;
@@ -269,11 +288,23 @@ width: 1180px;
     color: #FFFFFF;
 }
     &> div:nth-child(1){
-    flex-grow: 3
+    width:56%;
+    @media only screen and (max-width: 900px ){
+        
+        width:100%;
+        margin:auto;
+    
+    }
 }
     &> div:nth-child(2){
     margin-left: 16px;
-    flex-grow: 1;
+    width:35%;
+    @media only screen and (max-width: 900px ){
+        
+       width:80%;
+        margin:auto;
+    
+    }
 }
 `;
 
@@ -306,6 +337,13 @@ margin-bottom: 40px;
 }
     &> div{
     display: flex;
+    flex-wrap:wrap;
+
+    @media only screen and (max-width: 900px ){
+        
+        width:90%;
+    
+}
 }
     &> span{
     position: relative;

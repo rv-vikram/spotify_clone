@@ -45,7 +45,7 @@ export const Songs = (song, count) => {
 
 const Box = styled.div`
    
-    max-width:776px;
+    max-width:706px;
     height: 56px;
     background: #181212;
     cursor:pointer;
