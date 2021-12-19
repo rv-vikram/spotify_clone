@@ -37,7 +37,7 @@ export const Songs = (song, count) => {
         <div>{song.song.name}</div>
 
         <div>{getRandomInt()}</div>
-        <img src="heartheart.png" alt="heart" />
+        <img src="http://localhost:3000/heartheart.svg" alt="heart" />
         <div>{millisToMinutesAndSeconds(song.song.duration_ms)}</div>
         <img src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
     </Box>
@@ -55,7 +55,9 @@ const Box = styled.div`
     padding: 8px 40px;
     &:hover{
     background: rgba(255, 255, 255, 0.15);
-    &>img:nth-child(5),
+    &>img:nth-child(5){
+        visibility:visible;
+    }
     &>img:nth-child(7){
         visibility:visible;
     }
@@ -112,10 +114,5 @@ const Box = styled.div`
         margin: 4%;
         visibility:hidden;
     }
-    &>img:nth-child(5):hover{
-        /* width:24px;
-        margin: 4%;
-        visibility:hidden; */
-        src:"http://localhost:3000/heartwhite.svg";
-    }
+    
 `;

@@ -11,7 +11,7 @@
 .btn {
   position: absolute;
   color: white;
-  font-weight: bold;
+  font-weight: 500;
   width: 140px;
   height: 36px;
   right: 410px;
@@ -20,12 +20,13 @@
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 56px;
-  /* border:none; */
+  border:none;
 }
 .btn1 {
   position: absolute;
   width: 144px;
   height: 32px;
+  font-weight: 500;
   right: 250px;
   top: 16px;
   background: #0a0f11;

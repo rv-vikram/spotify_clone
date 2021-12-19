@@ -31,9 +31,9 @@ export const PlaylistBoxes = (song, count) => {
         <div>{song?.song?.track?.name}</div>
 
         <div>{getRandomInt()}</div>
-        <img src="heartheart.svg" alt="heart" />
+        <img src="http://localhost:3000/heartheart.svg" alt="heart" />
         <div>{millisToMinutesAndSeconds(song?.song?.track?.duration_ms)}</div>
-        <img src="MoreTripledots.svg" alt="dots" />
+        <img src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
     </Box>
 }
 

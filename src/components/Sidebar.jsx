@@ -53,7 +53,7 @@ export const Sidebar = () => {
                 </div>
 
                 <hr></hr>
-                <div className={styles.music_type_div}>
+                {/* <div className={styles.music_type_div}>
                     <p className={styles.music_types}>Best of Decade For You</p>
                     <p className={styles.music_types}>Motivation</p>
                     <p className={styles.music_types}>Workout Music</p>
@@ -62,7 +62,7 @@ export const Sidebar = () => {
                     <p className={styles.music_types}>K-pop</p>
                     <p className={styles.music_types}>Mood Booster</p>
                     <p className={styles.music_types}>Liked from Radio</p>
-                </div>
+                </div> */}
 
                 <div className={styles.downloadApp_div}>
                     <div>

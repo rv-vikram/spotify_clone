@@ -136,14 +136,19 @@ export const Debouncing = () => {
             {/* {searchResult.slice(0, 5).map((song) => (
               <Msongs key={song} song={song} />
             ))} */}
-            {searchResult.splice(0, 5).map((e, count) => {
+          
+            {searchResult.splice(0, 4).map((e, count) => {
               return <Songs key={e.id} count={count++} song={e}>
 
                 <img src={e?.album?.images[0]?.url} alt="" />
                 <div >
                   <h5 style={{ margin: '6px 0px' }}>{e?.name}</h5>
                   <p style={{ margin: '0px', fontSize: '10px' }}>{e.artists[0].name}</p>
+                  
                 </div>
+                <img className='heart' src="http://localhost:3000/heartheart.svg" alt="heart" />
+                <div style={{color:'white',fontSize:'10px',margin:'10px'}}>{(e.duration_ms/60000).toFixed(1)}</div>
+                <img className='heart' src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
               </Songs>
             })}
           </div>
@@ -179,7 +184,12 @@ width:10%;
 padding:0px;
 margin-right:14px;
 }
-
+.heart{
+  width:3%;
+  position:relative;
+  top:-15px;
+  left:15px;
+}
 
 `
 
@@ -215,7 +225,7 @@ padding:15px;
   }
 
   @media only screen and (max-width: 1100px ){
-    display:block;
+    display:${props => props.prop>0 ? "block" : "none"};
     & div{
       width:100%;
       margin-bottom:10px;
