@@ -41,6 +41,10 @@
   height: 32px;
   display: flex;
 }
+/*onclick="history.back()"*/
+.boxings>div{
+  cursor: pointer;
+}
 .boxings>div:nth-child(1)>img{
   position: relative;
   left: 30%;
