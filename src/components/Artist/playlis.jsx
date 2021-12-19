@@ -76,17 +76,7 @@ export function Playlist() {
 
                 </SandAP>
 
-                <Popular>
-                    <h2>Popular Releases</h2>
-                    <span>SEE ALL</span>
-                    <div>
-                        <Boxes />
-                        <Boxes />
-                        <Boxes />
-                        <Boxes />
-                    </div>
-
-                </Popular>
+              
             </Content>
 
             {

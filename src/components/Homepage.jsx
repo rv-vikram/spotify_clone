@@ -80,7 +80,7 @@ export const Homepage = () => {
 
           <div>
             {(throwback.slice(8, 12)).map((e) => {
-              return <Link style={{ textDecoration: "none" }} to={`/playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+              return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
@@ -93,7 +93,7 @@ export const Homepage = () => {
 
           <div>
             {(throwback.slice(12, 16)).map((e) => {
-              return <HomeBoxes prop={e} />
+               return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
@@ -106,7 +106,7 @@ export const Homepage = () => {
 
           <div>
             {(throwback.slice(16, 20)).map((e) => {
-              return <HomeBoxes prop={e} />
+               return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
