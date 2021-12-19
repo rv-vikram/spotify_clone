@@ -338,11 +338,12 @@ margin-bottom: 40px;
     &> div{
     display: flex;
     flex-wrap:wrap;
+    
 
     @media only screen and (max-width: 900px ){
         
         width:90%;
-    
+        margin-bottom:10px;
 }
 }
     &> span{

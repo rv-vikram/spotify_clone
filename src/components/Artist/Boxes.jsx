@@ -16,8 +16,9 @@ export const Box = styled.div`
    height:280px;
    @media only screen and (max-width: 900px ){
         
-    width:30%;
-
+    width:30%;  
+    margin-bottom:40px;
+    
 }
     background: #181818;
     mix-blend-mode: normal;
@@ -41,6 +42,9 @@ export const Box = styled.div`
         font-size: 16px;
         line-height: 20px;
         color: #FFFFFF;
+        @media only screen and (max-width: 900px ){
+            font-size:13px;
+        }
     }
     &>div:nth-child(3){
         font-weight: 500;
@@ -48,6 +52,9 @@ export const Box = styled.div`
         line-height: 16px;
         letter-spacing: -0.03em;
         color: #B2B2B2;
+        @media only screen and (max-width: 900px ){
+            font-size:10px;
+        }
     }
     &>div:nth-child(4){
         visibility:hidden;
