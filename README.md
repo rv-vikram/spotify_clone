@@ -26,8 +26,21 @@ This project is a clone of spotify website.In Spotify's apps, music can be brows
 
 - Rahul Kharche https://github.com/RahulK2699
 - Ramendra Vikram Singh Parihar https://github.com/rv-vikram
-- Anup Kumar Pandey https://github.com/####
+- Anup Kumar Pandey https://github.com/Anuppandey009
 - Shikha Tiwari https://github.com/shikha-max
 
 
 ## App Images
+
+
+
+## Login Page
+![image info](./app_images/spotifyLogin.png)
+<br><br>
+![image info](./app_images/spotifyafterLogin.png)
+## HomePage
+![image info](./app_images/spotifyhomepage.png)
+## Search Page
+![image info](./app_images/search.png)
+## Album Page
+![image info](./app_images/album.jpg)
