@@ -18,9 +18,15 @@ export const Login = () => {
     const [logout, setLogout] = useState(false)
     // const [refresh,setRefresh]= useState(false)
 
-    const { state, f } = useContext(AutheContext)
+    const { state, f } = useContext(AutheContext);
 
     spotifyApi.setAccessToken(state)
+    // spotifyApi.getMe()
+    //     .then(function (data) {
+    //         console.log('Some information about the authenticated user', data.body);
+    //     }, function (err) {
+    //         console.log('Something went wrong!', err);
+    //     });
 
     useEffect(() => {
         let hash = getTokenFromResponse()
@@ -37,10 +43,9 @@ export const Login = () => {
             f(state)
 
             spotifyApi.getMe().then((me) => {
-
                 setUser(me.display_name)
             });
-
+            console.log(user);
 
         }
 
@@ -55,8 +60,8 @@ export const Login = () => {
                 <img src="spotifywhite.svg" alt="" style={{ clear: "right" }} />
 
                 <div className="container" >
-                   <p >Premium</p>
-                  <p>Support</p>
+                    <p >Premium</p>
+                    <p>Support</p>
                     <p>Download</p>
 
                     <div style={{ width: '1px', height: '20px', background: 'white', margin: '10px 15px 0 0' }}></div>

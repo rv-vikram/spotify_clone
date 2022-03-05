@@ -3,7 +3,7 @@
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/#
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = "92dd421bf3424cee834b25f04461da51";
+const clientId = "f31618d29be64fa88ba4e6331cc2c540";
 const redirectUri = "http://localhost:3000/";
 const scopes = [
   "user-read-currently-playing",
