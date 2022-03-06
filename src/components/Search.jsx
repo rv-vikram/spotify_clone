@@ -2,7 +2,6 @@ import { Sidebar } from "./Sidebar"
 import { useEffect, useState, useContext } from "react"
 import SpotifyWebApi from "spotify-web-api-js";
 import { HomeNavbar } from "./HomeNavbar";
-import { Msongs } from "./Msongs.jsx";
 import { AutheContext } from './Contextprovider'
 
 import styled from "styled-components";
@@ -24,7 +23,6 @@ export const Debouncing = () => {
     'type': "artist",
     'uri': "spotify:artist:4YRxDV8wJFPHPTeXepOstw"
   })
-  const [artists, setArtists] = useState([])
 
 
   const [searchResult, setSearchResult] = useState([
@@ -54,7 +52,7 @@ export const Debouncing = () => {
     spotifyApi.setAccessToken(state)
 
     spotifyApi.getCategories({
-     
+
       country: 'IN'
 
     })
@@ -70,7 +68,6 @@ export const Debouncing = () => {
 
 
   }, [state, f])
-  let c = 0
   useEffect(() => {
     if (!search) {
       return (
@@ -136,7 +133,7 @@ export const Debouncing = () => {
             {/* {searchResult.slice(0, 5).map((song) => (
               <Msongs key={song} song={song} />
             ))} */}
-          
+
             {searchResult.splice(0, 4).map((e, count) => {
               return <Songs key={e.id} count={count++} song={e}>
 
@@ -144,10 +141,10 @@ export const Debouncing = () => {
                 <div >
                   <h5 style={{ margin: '6px 0px' }}>{e?.name}</h5>
                   <p style={{ margin: '0px', fontSize: '10px' }}>{e.artists[0].name}</p>
-                  
+
                 </div>
                 <img className='heart' src="http://localhost:3000/heartheart.svg" alt="heart" />
-                <div style={{color:'white',fontSize:'10px',margin:'10px'}}>{(e.duration_ms/60000).toFixed(1)}</div>
+                <div style={{ color: 'white', fontSize: '10px', margin: '10px' }}>{(e.duration_ms / 60000).toFixed(1)}</div>
                 <img className='heart' src="http://localhost:3000/MoreTripledots.svg" alt="dots" />
               </Songs>
             })}
@@ -200,7 +197,7 @@ width:80%;
 margin:35px 15px;
 padding:0px;
 flex-wrap:wrap;
-align-item:center;
+align-items:center;
   justify-content:center;
 
 `
@@ -225,7 +222,7 @@ padding:15px;
   }
 
   @media only screen and (max-width: 1100px ){
-    display:${props => props.prop>0 ? "block" : "none"};
+    display:${props => props.prop > 0 ? "block" : "none"};
     & div{
       width:100%;
       margin-bottom:10px;
@@ -269,8 +266,8 @@ background:#181818;
   /* border: 1px solid black; */
   background: #121212;
   margin:auto;
-align-item: center;
-justify-content:center
+align-items: center;
+/* justify-content:center; */
  overflow-x:none ; 
 
 

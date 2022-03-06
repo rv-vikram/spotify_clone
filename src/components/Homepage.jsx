@@ -54,7 +54,7 @@ export const Homepage = () => {
           <span>SEE ALL</span>
           <div>
             {(throwback.slice(0, 4)).map((e) => {
-              return <Link style={{ textDecoration: 'none',marginBottom:'10px' }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+              return <Link style={{ textDecoration: 'none', marginBottom: '10px' }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
@@ -64,6 +64,7 @@ export const Homepage = () => {
 
         <Popular>
           <h2>Sing-along</h2>
+          <span>SEE ALL</span>
 
           <div>
             {(salena.slice(0, 4)).map((e) => {
@@ -77,6 +78,7 @@ export const Homepage = () => {
         <Popular>
 
           <h2>Try Something Else</h2>
+          <span>SEE ALL</span>
 
           <div>
             {(throwback.slice(8, 12)).map((e) => {
@@ -90,10 +92,11 @@ export const Homepage = () => {
         <Popular>
 
           <h2>Recommended for Today</h2>
+          <span>SEE ALL</span>
 
           <div>
             {(throwback.slice(12, 16)).map((e) => {
-               return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+              return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 
@@ -103,10 +106,11 @@ export const Homepage = () => {
         <Popular>
 
           <h2>Today's Biggest Hits</h2>
+          <span>SEE ALL</span>
 
           <div>
             {(throwback.slice(16, 20)).map((e) => {
-               return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
+              return <Link style={{ textDecoration: "none" }} to={`/Playlist/${e.id}`}><HomeBoxes prop={e} /></Link>
             })}
 
 

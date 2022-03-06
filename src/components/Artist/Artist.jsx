@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Sidebar } from "../Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Songs";
+
 import { Pick } from "./Pick";
 import { Boxes } from "./Boxes";
 import { useContext } from "react/cjs/react.development";
@@ -58,6 +59,7 @@ export function Artist() {
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state, id]);
 
 
@@ -338,6 +340,7 @@ export const Popular = styled.div`
 
 margin-bottom: 40px;
     &> h2{
+        width:100%;
     font-weight: bold;
     font-size: 24px;
     line-height: 28px;
@@ -358,13 +361,10 @@ margin-bottom: 40px;
         width:90%;
         margin-bottom:30px;
 }
-
+    }
 &> a{
     display: flex;
     flex-wrap:wrap;
-   & div{
-       
-   } 
 
     @media only screen and (max-width: 900px ){
         
@@ -387,4 +387,4 @@ margin-bottom: 40px;
     color: white;
     text-decoration: underline;
 }
-`;
+`

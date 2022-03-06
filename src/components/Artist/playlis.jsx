@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react"
 
-import styled from "styled-components";
 import { Sidebar } from "../Sidebar";
 import { HomeNavbar } from "../HomeNavbar";
 import SpotifyWebApi from "spotify-web-api-js";
 
-import { Boxes } from "./Boxes";
 import { useContext } from "react/cjs/react.development";
 import { AutheContext } from '../Contextprovider'
 import { Audioplay } from './audio'
 import { useParams } from "react-router-dom";
 import { PlaylistBoxes } from '../plalistbox'
-import { Back, Controls, Content, SandAP, Popular, Layout } from './Artist'
+import { Back, Controls, Content, SandAP, Layout } from './Artist'
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -46,6 +44,7 @@ export function Playlist() {
                 console.log('Something went wrong!', err);
             });
         console.log("des", description);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state, id]);
 
 
@@ -79,7 +78,7 @@ export function Playlist() {
 
                 </SandAP>
 
-              
+
             </Content>
 
             {

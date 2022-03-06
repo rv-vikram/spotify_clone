@@ -9,7 +9,6 @@ import { Footer } from "./Footer";
 import { AutheContext } from "./Contextprovider";
 import { getTokenFromResponse } from "./spotifyApi"
 import SpotifyWebApi from "spotify-web-api-js";
-import { Link } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
 export const Login = () => {
