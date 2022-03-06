@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Sidebar } from "./Sidebar";
 import SpotifyWebApi from "spotify-web-api-js";
 import { Songs } from "./Artist/Songs";
 
-import { useContext } from "react/cjs/react.development";
+// import { useContext } from "react/cjs/react.development";
 import { AutheContext } from './Contextprovider'
 import { Audioplay } from './Artist/audio'
 import { useParams } from "react-router-dom";
