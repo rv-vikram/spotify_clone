@@ -13,7 +13,6 @@ import { Audioplay } from './audio'
 import { useParams } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
-
 export function Artist() {
 
 

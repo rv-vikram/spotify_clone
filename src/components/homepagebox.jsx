@@ -46,7 +46,6 @@ const Box = styled.div`
         line-height: 16px;
         letter-spacing: -0.03em;
         color: #B2B2B2; */
-    }
     &>div:nth-child(3){
         visibility:hidden;
         position:relative;
