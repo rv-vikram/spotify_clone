@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 
 import styled from "styled-components";
 import { Sidebar } from "../Sidebar";
@@ -7,7 +7,7 @@ import { Songs } from "./Songs";
 
 import { Pick } from "./Pick";
 import { Boxes } from "./Boxes";
-import { useContext } from "react/cjs/react.development";
+// import { useContext } from "react/cjs/react.development";
 import { AutheContext } from '../Contextprovider'
 import { Audioplay } from './audio'
 import { useParams } from "react-router-dom";
